@@ -1,0 +1,10 @@
+{
+  "sources": ["tokyogigguide", "tokyodross", "songkick", "jsonld"],
+  "days_ahead": 60,
+  "delay_seconds": 1.5,
+  "max_event_fetches": 700,
+  "max_posts": 30,
+  "songkick_pages": 8,
+  "songkick_genres": true,
+  "jsonld_pages": []
+}

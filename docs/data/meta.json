@@ -1,0 +1,30 @@
+{
+  "generated": "2026-10-17T23:21+09:00",
+  "total_listings": 41,
+  "after_merge": 37,
+  "requests": 20,
+  "sources": {
+    "tokyogigguide": {
+      "name": "Tokyo Gig Guide",
+      "gigs": 3,
+      "seconds": 0.0,
+      "error": null,
+      "used_previous_results": false
+    },
+    "tokyodross": {
+      "name": "Tokyo Dross",
+      "gigs": 36,
+      "seconds": 0.0,
+      "error": null,
+      "used_previous_results": false
+    },
+    "songkick": {
+      "name": "Songkick",
+      "gigs": 3,
+      "seconds": 0.0,
+      "error": null,
+      "used_previous_results": false
+    }
+  },
+  "sample": true
+}

@@ -1,0 +1,4 @@
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+pykakasi>=2.2   # optional: romaji for Japanese venue names not in the built-in dictionary

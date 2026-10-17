@@ -1,0 +1,46 @@
+name: Daily gig scan
+
+on:
+  schedule:
+    - cron: "0 20 * * *"      # 20:00 UTC = 05:00 JST
+  workflow_dispatch:           # "Run workflow" button for a manual scan
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gig-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90        # Tokyo Gig Guide asks for 2 minutes between requests
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Test parsers
+        run: python -m unittest discover -s tests -t .
+
+      - name: Scan sites
+        run: python -m scraper.run
+
+      - name: Commit new listings
+        run: |
+          git config user.name "gig-scan bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data data/cache
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Gig listings $(TZ=Asia/Tokyo date +'%Y-%m-%d')"
+            git push
+          fi
