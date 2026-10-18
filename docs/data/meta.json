@@ -1,27 +1,27 @@
 {
-  "generated": "2026-10-18T22:34+09:00",
-  "total_listings": 465,
-  "after_merge": 418,
-  "requests": 38,
+  "generated": "2026-10-19T05:25+09:00",
+  "total_listings": 289,
+  "after_merge": 258,
+  "requests": 36,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 269,
-      "seconds": 841.5,
+      "gigs": 83,
+      "seconds": 600.4,
       "error": null,
       "used_previous_results": false
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 134,
-      "seconds": 0.9,
+      "gigs": 131,
+      "seconds": 0.6,
       "error": null,
       "used_previous_results": false
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 134,
-      "seconds": 42.5,
+      "gigs": 132,
+      "seconds": 42.3,
       "error": null,
       "used_previous_results": false
     },
