@@ -67,14 +67,17 @@ class Http:
         self._last[host] = time.monotonic()
 
     def get(self, url: str, *, retries: int = 2, **kw) -> requests.Response | None:
+        self.last = {"url": url, "status": None, "error": None, "body": None}
         if not self._allowed(url):
             log.warning("robots.txt disallows %s - skipped", url)
+            self.last["error"] = "disallowed by robots.txt"
             return None
         for attempt in range(retries + 1):
             self._wait(url)
             try:
                 self.requests_made += 1
                 r = self.s.get(url, timeout=self.timeout, **kw)
+                self.last.update(status=r.status_code, body=r.text[:200000])
                 if r.status_code == 200:
                     if not r.encoding or r.encoding.lower() == "iso-8859-1":
                         r.encoding = r.apparent_encoding
@@ -82,7 +85,10 @@ class Http:
                 if r.status_code in (404, 410):
                     return None
                 log.info("HTTP %s for %s (attempt %d)", r.status_code, url, attempt + 1)
+                if r.status_code in (401, 403, 429):
+                    return None      # refused: don't hammer the site with retries
             except requests.RequestException as e:
+                self.last["error"] = f"{type(e).__name__}: {e}"
                 log.info("error %s for %s (attempt %d)", e, url, attempt + 1)
             if attempt < retries:
                 time.sleep(5 * (attempt + 1))

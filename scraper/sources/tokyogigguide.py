@@ -140,6 +140,21 @@ def parse_list_page(html: str, today: date) -> list[Gig]:
     return gigs
 
 
+def _save_debug(http, cfg: dict) -> None:
+    """Nothing parsed from page 1: keep what the site sent so the parser can be fixed."""
+    import json
+    from pathlib import Path
+    last = getattr(http, "last", None) or {}
+    d = Path(cfg.get("cache_dir", "data/cache"))
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "debug_tokyogigguide.json").write_text(json.dumps(
+        {k: v for k, v in last.items() if k != "body"} | {"body_length": len(last.get("body") or "")}, indent=2))
+    if last.get("body"):
+        (d / "debug_tokyogigguide.html").write_text(last["body"])
+    log.warning("TGG: page 1 gave no gigs (status %s, error %s) - saved debug copy",
+                last.get("status"), last.get("error"))
+
+
 def scrape(http, cfg: dict) -> list[Gig]:
     today = cfg.get("today") or date.today()
     max_pages = int(cfg.get("tgg_max_pages", 12))
@@ -147,11 +162,11 @@ def scrape(http, cfg: dict) -> list[Gig]:
     gigs: list[Gig] = []
     for p in range(max_pages):
         html = http.text(LIST_URL.format(start=p * PAGE_SIZE))
-        if not html:
-            break
-        page = parse_list_page(html, today)
+        page = parse_list_page(html, today) if html else []
         log.info("TGG page %d: %d gigs", p + 1, len(page))
         if not page:
+            if p == 0:
+                _save_debug(http, cfg)
             break
         gigs += page
         if len(page) < PAGE_SIZE // 2:
