@@ -54,6 +54,11 @@ class TextUtil(unittest.TestCase):
         self.assertEqual(to_english("東京国際フォーラム ホールA")[0], "Tokyo International Forum Hall A")
         self.assertEqual(to_english("WWW X"), ("WWW X", None))
 
+    def test_bilingual_names(self):
+        self.assertEqual(to_english("Blue Note / ブルーノート"), ("Blue Note", "ブルーノート"))
+        self.assertEqual(to_english("Shinjuku Loft (新宿LOFT)"), ("Shinjuku Loft", "新宿LOFT"))
+        self.assertEqual(to_english("Nishieifuku 西永福JAM")[1], "Nishieifuku 西永福JAM")
+
 
 class TokyoGigGuide(unittest.TestCase):
     TODAY = date(2026, 10, 16)
@@ -158,7 +163,7 @@ class SongkickJsonLd(unittest.TestCase):
         self.assertEqual((g.title, g.start_time, g.area), ("DMBQ", "19:30", "Shibuya"))
         dc = jsonld.event_to_gig(evs[1], "Songkick", "u")
         self.assertIsNone(dc.start_time)
-        self.assertEqual(dc.venue_ja, "Toyosu Pit / 豊洲ピット")
+        self.assertEqual((dc.venue, dc.venue_ja), ("Toyosu Pit", "豊洲ピット"))
         fest = jsonld.event_to_gig(evs[2], "Songkick", "u")
         self.assertEqual(fest.end_date, "2026-11-23")
 

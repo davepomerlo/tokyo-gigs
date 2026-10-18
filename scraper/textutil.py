@@ -154,6 +154,14 @@ def to_english(name: str | None) -> tuple[Optional[str], Optional[str]]:
     name = nfkc(name)
     if not has_japanese(name):
         return name, None
+    # bilingual names: 'Blue Note / ブルーノート', 'Shinjuku Loft (新宿LOFT)'
+    for pat in (r"^(.+?)\s*[/／]\s*(.+)$", r"^(.+?)\s*[(（]\s*([^)）]+?)\s*[)）]\s*$"):
+        m = re.match(pat, name)
+        if m:
+            a, b = m.group(1).strip(), m.group(2).strip()
+            if has_japanese(a) != has_japanese(b):
+                en, ja = (b, a) if has_japanese(a) else (a, b)
+                return en, ja
     out = name
     for k in _KEYS:
         if k in out:

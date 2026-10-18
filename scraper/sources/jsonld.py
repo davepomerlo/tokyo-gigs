@@ -113,7 +113,9 @@ def event_to_gig(ev: dict, source_name: str, page_url: str) -> Gig | None:
     url = ev.get("url") or page_url
     if isinstance(url, list):
         url = url[0]
-    v_en, v_ja = to_english(venue or "Unknown venue")
+    if not venue or venue.lower() in ("tokyo", "tokyo, japan", "unknown venue", "東京"):
+        venue = "Venue tbc"
+    v_en, v_ja = to_english(venue)
     a_en, a_ja = to_english(area)
     tags = []
     for k in ("genre", "keywords"):
