@@ -67,8 +67,83 @@ def _between(text: str, start: str, ends: list[str]) -> str | None:
     return text[i + len(start):j].strip(" :|-") or None
 
 
+def _own(el: Tag, card: Tag) -> bool:
+    """True if el belongs to this card, not to a later card nested inside it.
+    (The site leaves its <li> tags unclosed, so each card ends up inside the previous one.)"""
+    return el.find_parent("div", class_="jem-event-details") is card
+
+
+def parse_jem_cards(soup: BeautifulSoup, today: date) -> list[Gig]:
+    """The real list layout: each gig is a div.jem-event-details holding an <h4> title link
+    and div.jem-event-info boxes whose title attribute reads 'Label: value'."""
+    gigs, seen = [], set()
+    for card in soup.find_all("div", class_="jem-event-details"):
+        h4 = next((h for h in card.find_all("h4") if _own(h, card)), None)
+        a = h4.find("a", href=EVENT_RE) if h4 else None
+        if not a:
+            continue
+        eid = EVENT_RE.search(a["href"]).group(1)
+        if eid in seen:
+            continue
+        seen.add(eid)
+        title = nfkc(a.get_text(" "))
+        fields: dict[str, str] = {}
+        cats: list[str] = []
+        for box in card.find_all("div", class_="jem-event-info"):
+            if not _own(box, card) or not box.get("title") or ":" not in box["title"]:
+                continue
+            label, value = box["title"].split(":", 1)
+            label, value = label.strip(), nfkc(value)
+            fields.setdefault(label, value)
+            if label.startswith("Categor"):
+                cats += [c.strip() for c in value.split(",") if c.strip()]
+
+        # date: the schema.org startDate carries the year; fall back to the visible text
+        meta = next((m for m in card.find_all("meta", itemprop="startDate") if _own(m, card)), None)
+        day = time_ = None
+        if meta and meta.get("content"):
+            m = re.match(r"(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2}))?", meta["content"])
+            if m:
+                day, time_ = m.group(1), m.group(2)
+        if not day:
+            m = DATE_RE.search(fields.get("Date", ""))
+            if not m:
+                continue
+            mon = MON[m.group(1)]
+            day = date(_year_for(mon, today), mon, int(m.group(2))).isoformat()
+        if not time_ or time_ == "00:00":
+            tm = re.search(r"(\d{1,2}[.:]\d{2})\s*$", fields.get("Date", ""))
+            time_ = parse_time(tm.group(1)) if tm else None
+
+        venue = fields.get("Live House") or "Venue tbc"
+        area = fields.get("Area") or None
+        adv_txt = re.sub(r"^Advance:\s*", "", fields.get("Adv. Price", "")) or None
+        door_txt = re.sub(r"^Door:\s*", "", fields.get("Door Price", "")) or None
+        adv, _, _, free_a = parse_price(adv_txt)
+        door, _, _, free_d = parse_price(door_txt)
+        price_bits = [f"{lab} {raw}" for lab, raw, val in (("Adv", adv_txt, adv), ("Door", door_txt, door))
+                      if raw and (val is None or re.search(r"drink|incl|order|day only|tbc|tba|\+|\bfor\b", raw, re.I))]
+        v_en, v_ja = to_english(venue)
+        a_en, a_ja = to_english(area)
+        url = a["href"] if a["href"].startswith("http") else BASE + a["href"]
+        gigs.append(Gig(
+            date=day, title=title,
+            venue=v_en or venue, venue_ja=v_ja, area=a_en, area_ja=a_ja,
+            open_time=time_,                    # the list shows the open (doors) time
+            price_adv=adv, price_door=door,
+            price_text=" / ".join(price_bits) or None,
+            free=(free_a or free_d) and not (adv or door),
+            artists=[x.strip() for x in re.split(r",|、", title) if x.strip()][:20],
+            tags=cats, sources=[Source(NAME, url.split("?")[0])],
+        ))
+    return gigs
+
+
 def parse_list_page(html: str, today: date) -> list[Gig]:
     soup = BeautifulSoup(html, "lxml")
+    if soup.find("div", class_="jem-event-details"):
+        return parse_jem_cards(soup, today)
+    # older/other JEM layouts: work it out from the links around each title
     for bad in soup(["script", "style", "nav", "header", "footer", "form", "noscript"]):
         bad.decompose()
     gigs, seen = [], set()
@@ -168,6 +243,10 @@ def scrape(http, cfg: dict) -> list[Gig]:
             if p == 0:
                 _save_debug(http, cfg)
             break
+        if p == 0:                       # parsing works again: drop any old debug copy
+            from pathlib import Path
+            for f in Path(cfg.get("cache_dir", "data/cache")).glob("debug_tokyogigguide.*"):
+                f.unlink()
         gigs += page
         if len(page) < PAGE_SIZE // 2:
             break

@@ -97,6 +97,22 @@ class TokyoGigGuide(unittest.TestCase):
         g = self.cards["Oct 31 New Year Bash"]
         self.assertEqual(g.date, "2027-01-02")
 
+    def test_real_site_layout(self):
+        """Six cards as served by the live site on 2026-10-18 (unclosed <li>s, labelled boxes)."""
+        gigs = tgg.parse_list_page(fx("tgg_real_2026-10.html"), date(2026, 10, 18))
+        self.assertEqual(len(gigs), 6)
+        self.assertEqual(len({g.sources[0].url for g in gigs}), 6)       # nested cards not mixed up
+        mona = gigs[0]
+        self.assertEqual((mona.date, mona.open_time, mona.venue, mona.area), ("2026-10-18", "11:30", "Mona Records", "Shimokitazawa"))
+        self.assertEqual(len(mona.tags), 5)
+        loft = gigs[1]
+        self.assertEqual((loft.venue, loft.price_adv, loft.price_door), ("Loft", 5000, 5500))
+        self.assertIn("drink", loft.price_text)
+        dj = gigs[3]
+        self.assertEqual((dj.price_adv, dj.price_door, dj.tags), (None, 1000, ["DJ"]))
+        fl = gigs[5]
+        self.assertEqual((fl.venue, fl.price_door, fl.open_time), ("Forestlimit", 2000, "18:00"))
+
     def test_table_layout(self):
         rows = tgg.parse_list_page(fx("tgg_list_table.html"), self.TODAY)
         self.assertEqual(len(rows), 2)
@@ -107,8 +123,10 @@ class TokyoGigGuide(unittest.TestCase):
         self.assertEqual((jam.price_adv, jam.price_door, jam.tags), (None, 1500, []))
 
     def test_scrape_stops_on_short_page(self):
+        import tempfile
         http = FakeHttp({"/en/gigs?start=0": fx("tgg_list_cards.html")})
-        gigs = tgg.scrape(http, {"today": self.TODAY})
+        with tempfile.TemporaryDirectory() as tmp:
+            gigs = tgg.scrape(http, {"today": self.TODAY, "cache_dir": tmp})
         self.assertEqual(len(gigs), 7)
         self.assertEqual(http.requests_made, 1)
 
