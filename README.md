@@ -30,6 +30,34 @@ and the page at `https://<your-user>.github.io/<repo>/` updates.
 
 Until the first scan finishes the page shows sample listings built from the test fixtures.
 
+## Use it as an app on your phone
+
+The page is an installable web app: it gets its own home-screen icon, opens full-screen
+without browser bars, and keeps the last listings for offline use (on the subway, say).
+
+- **iPhone:** open the page in **Safari** → Share button → **Add to Home Screen** (ホーム画面に追加).
+  The page shows this tip to iPhone visitors.
+- **Android:** open it in **Chrome** → tap **Install app** at the top of the page
+  (or ⋮ menu → *Install app* / *Add to Home screen*).
+- **Mac/PC:** Chrome or Edge show an install icon in the address bar.
+
+Long-pressing the icon (Android) offers *Tonight* and *This weekend* shortcuts.
+An installed app that stays open overnight reloads itself on the next Tokyo day.
+
+When you change anything in `docs/` (not the daily data), bump `VERSION` in `docs/sw.js`
+so installed copies pick up the new version on their next launch.
+
+### App Store / Google Play (optional)
+
+Only worth it if you want the app listed in a store. The web app above already does
+everything this project needs, and daily listing updates keep working either way.
+
+- **Google Play:** [PWABuilder](https://www.pwabuilder.com) can wrap this site as an Android app
+  (a "Trusted Web Activity") from its URL. Needs a Google Play developer account (one-off fee).
+- **App Store:** wrap `docs/` with [Capacitor](https://capacitorjs.com), build in Xcode on a Mac,
+  and join the Apple Developer Program (US$99/year). Apple often rejects apps that are mostly
+  a website, so adding native extras (e.g. reminder notifications for saved gigs) helps.
+
 ## Being a good neighbour
 
 - Tokyo Gig Guide's robots.txt asks for **2 minutes between requests**. The scraper reads
@@ -69,5 +97,7 @@ scraper/merge.py          joins the same gig from different sites
 scraper/genres.py         maps site genre tags onto 12 filter buckets (+ venue hints)
 scraper/textutil.py       prices, times, Japanese → English place names (日本語 kept alongside)
 docs/                     the web page (GitHub Pages)
+docs/manifest.webmanifest app name, icons, shortcuts for installing
+docs/sw.js                offline support (service worker)
 .github/workflows/scan.yml  the 05:00 JST job
 ```

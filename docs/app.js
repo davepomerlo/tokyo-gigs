@@ -39,6 +39,9 @@
     { range: "week", day: null, genres: [], q: "", maxPrice: MAX_PRICE, area: "", free: false, saved: false },
     store.get("filters", {}), { day: null, q: "" }
   );
+  // home-screen shortcuts ("Tonight", "This weekend") open with ?range=...
+  const urlRange = new URLSearchParams(location.search).get("range");
+  if (["tonight", "weekend", "week", "all"].includes(urlRange)) state.range = urlRange;
   let GIGS = [];
 
   // ---- theme toggle ----
@@ -297,20 +300,30 @@
     const h = Math.round(mins / 60);
     return h < 36 ? `${h} hours ago` : `${Math.round(h / 24)} days ago`;
   }
+  const STANDALONE = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const IOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const INSTALL_TIP = IOS && !STANDALONE
+    ? `<p class="install-tip">Use it like an app: tap the Share button in Safari, then <b>Add to Home Screen</b> (ホーム画面に追加).</p>` : "";
+
   function renderMeta(meta) {
-    if (!meta) return;
+    if (!meta) { $("#foot").innerHTML = INSTALL_TIP; return; }
     if (meta.sample) {
-      $("#banner").innerHTML = `<p class="banner">Showing sample listings. Real gigs appear after the first daily scan runs on GitHub.</p>`;
+      $("#banner").insertAdjacentHTML("afterbegin", `<p class="banner">Showing sample listings. Real gigs appear after the first daily scan runs on GitHub.</p>`);
     }
     const src = Object.values(meta.sources || {});
-    $("#foot").innerHTML = `<p>Gathered from these listings, updated every morning at 5:00 Japan time. Prices are advance unless marked; always check the venue before you go.</p>
+    $("#foot").innerHTML = INSTALL_TIP + `<p>Gathered from these listings, updated every morning at 5:00 Japan time. Prices are advance unless marked; always check the venue before you go.</p>
       <ul>${src.map((s) => `<li class="${s.error || s.used_previous_results ? "bad" : ""}">${esc(s.name)}: ${s.gigs} gigs${s.error ? " (failed this morning)" : s.used_previous_results ? " (using yesterday's list)" : ""}</li>`).join("")}</ul>`;
   }
 
-  function boot(data, meta) {
+  function boot(data, meta, offline = false) {
     GIGS = (data.gigs || []).filter((g) => (g.end_date || g.date) >= TODAY);
     GIGS.forEach((g) => { g.genres = g.genres?.length ? g.genres : ["Other"]; g.sources = g.sources || []; });
     $("#updated").textContent = `${GIGS.length} upcoming gigs, updated ${since(data.generated)}`;
+    if (offline) {
+      $("#banner").insertAdjacentHTML("beforeend",
+        `<p class="banner">You're offline. Showing the listings saved ${since(data.generated)}; ticket links need a connection.</p>`);
+      addEventListener("online", () => location.reload(), { once: true });
+    }
     const areas = [...new Set(GIGS.map((g) => g.area).filter(Boolean))].sort();
     $("#area").insertAdjacentHTML("beforeend", areas.map((a) => `<option>${esc(a)}</option>`).join(""));
     if (state.area && !areas.includes(state.area)) state.area = "";
@@ -321,12 +334,48 @@
   if (window.__GIGS__) {                         // single-file preview build
     boot(window.__GIGS__, window.__META__);
   } else {
+    let offline = false;
     Promise.all([
-      fetch("data/gigs.json", { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch("data/gigs.json", { cache: "no-cache" }).then((r) => {
+        if (!r.ok) throw new Error(r.status);
+        offline = r.headers.get("X-From-Cache") === "1";
+        return r.json();
+      }),
       fetch("data/meta.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null),
-    ]).then(([d, m]) => boot(d, m)).catch(() => {
+    ]).then(([d, m]) => boot(d, m, offline)).catch(() => {
       $("#updated").textContent = "Listings couldn't be loaded.";
-      $("#list").innerHTML = `<div class="empty-state">The gig list file is missing. Run the "Daily gig scan" workflow on GitHub to create it.</div>`;
+      $("#list").innerHTML = navigator.onLine
+        ? `<div class="empty-state">The gig list file is missing. Run the "Daily gig scan" workflow on GitHub to create it.</div>`
+        : `<div class="empty-state">You're offline and no listings are saved yet. Open the app once with a connection and they'll be kept for offline use.</div>`;
     });
   }
+
+  // ---- installed-app behaviour ----
+  // An installed app can stay open for days: when it comes back to the front on a new
+  // Tokyo day, reload so "Tonight" and the day strip move on (and fresh listings load).
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && tokyoToday() !== TODAY) location.reload();
+  });
+
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+
+  // Android/desktop Chrome offer an install prompt; show our own button for it.
+  // (iPhone has no prompt: Share > Add to Home Screen, explained in the footer.)
+  let installEvt = null;
+  addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    installEvt = e;
+    $("#installBtn").hidden = false;
+  });
+  $("#installBtn").addEventListener("click", async () => {
+    if (!installEvt) return;
+    installEvt.prompt();
+    await installEvt.userChoice;
+    installEvt = null;
+    $("#installBtn").hidden = true;
+  });
+  addEventListener("appinstalled", () => { $("#installBtn").hidden = true; });
+
 })();

@@ -173,3 +173,16 @@ footer .bad { color: var(--g-punk); }
   .gig.open .detail { animation: drop .16s ease-out; }
   @keyframes drop { from { opacity: 0; transform: translateY(-4px); } }
 }
+
+/* ---------- installed app ---------- */
+.head-btns { display: flex; gap: 6px; }
+.install-btn { border-color: var(--pink); color: var(--ink); }
+.install-btn[hidden] { display: none; }
+.install-tip { background: var(--paper-2); border-left: 4px solid var(--pink); padding: 8px 12px; color: var(--ink); }
+/* keep content clear of the iPhone notch and home bar when opened from the home screen */
+body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+.wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+@media (display-mode: standalone) {
+  .gig > button, .chip, .day, .seg button { -webkit-tap-highlight-color: transparent; }
+  body { overscroll-behavior-y: none; }
+}
