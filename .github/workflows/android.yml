@@ -6,15 +6,12 @@ name: Build Android app
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "docs/data/**"
-      - "data/**"
-      - "scraper/**"
-      - "tests/**"
-      - "tools/**"
-      - ".github/workflows/sample.yml"
-      - ".github/workflows/scan.yml"
-      - "*.md"
+    paths:                       # only the app's own files; not the daily listings or the scraper
+      - "docs/**"
+      - "!docs/data/**"
+      - "capacitor.config.json"
+      - "package.json"
+      - "android-build/**"
   workflow_dispatch:
 
 permissions:
