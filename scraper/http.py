@@ -16,6 +16,30 @@ USER_AGENT = (
 )
 
 
+def pick_encoding(r: requests.Response) -> str:
+    """Japanese venue sites often declare the wrong charset (or none). Valid UTF-8 wins;
+    otherwise the page's own <meta charset>, then the header, then a guess."""
+    raw = r.content
+    try:
+        raw.decode("utf-8")
+        return "utf-8"
+    except UnicodeDecodeError:
+        pass
+    import re as _re
+    m = _re.search(rb'<meta[^>]+charset=["\']?([A-Za-z0-9_\-]+)', raw[:4000], _re.I)
+    if m:
+        enc = m.group(1).decode("ascii", "ignore").lower()
+        enc = {"shift-jis": "cp932", "shift_jis": "cp932", "sjis": "cp932", "x-sjis": "cp932", "euc-jp": "euc_jp"}.get(enc, enc)
+        try:
+            raw.decode(enc)
+            return enc
+        except (LookupError, UnicodeDecodeError):
+            pass
+    if r.encoding and r.encoding.lower() not in ("iso-8859-1",):
+        return r.encoding
+    return r.apparent_encoding or "utf-8"
+
+
 class Http:
     def __init__(self, delay: float = 1.5, timeout: float = 25, user_agent: str = USER_AGENT):
         self.s = requests.Session()
@@ -79,8 +103,7 @@ class Http:
                 r = self.s.get(url, timeout=self.timeout, **kw)
                 self.last.update(status=r.status_code, body=r.text[:200000])
                 if r.status_code == 200:
-                    if not r.encoding or r.encoding.lower() == "iso-8859-1":
-                        r.encoding = r.apparent_encoding
+                    r.encoding = pick_encoding(r)
                     return r
                 if r.status_code in (404, 410):
                     return None
