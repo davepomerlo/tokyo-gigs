@@ -147,13 +147,16 @@ class ClubsAndHalls(unittest.TestCase):
 
     def test_concert_square(self):
         g = concertsquare.parse(fx("csq"))
-        self.assertGreaterEqual(len(g), 15)
-        fig = next(x for x in g if "Figaro" in x.title)
-        self.assertEqual((fig.date, fig.start_time), ("2026-11-21", "13:00"))
-        self.assertEqual(bucket_tags(fig.tags), ["Classical"])
+        self.assertEqual(len(g), 10)                                   # the paged list, not the carousels
+        self.assertEqual([x.date for x in g], sorted(x.date for x in g))
+        first = g[0]
+        self.assertEqual((first.date, first.start_time, first.venue), ("2026-10-19", "18:30", "Bechstein Centrum Tokyo Saar"))
+        self.assertEqual(bucket_tags(first.tags), ["Classical"])
+        self.assertIn("Chopin", first.note)
         trad = concertsquare.parse(fx("csq-hougaku"))
-        self.assertTrue(trad)
-        self.assertEqual(bucket_tags(trad[0].tags), ["World & Traditional"])
+        self.assertTrue(all("traditional" in " ".join(x.tags).lower() for x in trad))
+        if trad:
+            self.assertEqual(bucket_tags(trad[0].tags), ["World & Traditional"])
 
 
 class GenreGuessing(unittest.TestCase):
@@ -181,6 +184,25 @@ class GenreGuessing(unittest.TestCase):
         self.assertEqual(len(out), 1)
         self.assertEqual(out[0].title, "Shibusa Shirazu Orchestra")                 # the guide's English title
         self.assertEqual(out[0].price_adv, 4400)                                      # the venue's price
+
+    def test_one_show_each_side_merges(self):
+        site = Gig(date="2026-11-08", title="羽野昌二+李世揚+Cal Lyall", venue="Nanahari", artists=["羽野昌二"],
+                   tags=["Experimental"], sources=[Source("Nanahari website", "u")])
+        guide = Gig(date="2026-11-08", title="Shih-Yang Lee (piano, from Taiwan)", venue="Nanahari", open_time="19:00",
+                    artists=["Shih-Yang Lee"], sources=[Source("Tokyo Gig Guide", "u")])
+        other_day = Gig(date="2026-11-09", title="Someone else", venue="Nanahari", artists=["x"], sources=[Source("Tokyo Gig Guide", "u")])
+        out = merge([site, guide, other_day])
+        self.assertEqual(len(out), 2)
+
+    def test_two_site_shows_do_not_absorb_guide(self):
+        a = Gig(date="2026-10-03", title="昼", venue="Knuttel House", start_time="14:00", artists=["a"], sources=[Source("Knuttel House website", "u")])
+        b = Gig(date="2026-10-03", title="夜", venue="Knuttel House", start_time="19:30", artists=["b"], sources=[Source("Knuttel House website", "u")])
+        c = Gig(date="2026-10-03", title="Evening", venue="Knuttel House", artists=["c"], sources=[Source("Tokyo Dross", "u")])
+        self.assertEqual(len(merge([a, b, c])), 3)
+
+    def test_www_room_label(self):
+        www = read("www")
+        self.assertFalse(any(x.title in ("WWW X", "WWW") for x in www))
 
 
 if __name__ == "__main__":

@@ -207,6 +207,9 @@ def to_gig(v: Venue, s: Show, page_url: str) -> Optional[Gig]:
         if people:
             title = ", ".join(people)
             names = people
+    venue_name = v.name
+    if v.key == "www" and re.fullmatch(r"WWW\s*[Xβ]?", title.strip(), re.I) and s.lines:
+        venue_name, title, names = title.strip().upper().replace("Β", "β"), s.lines[0], lineup(Show(s.date, s.lines[0], s.lines[1:]))
     title = re.sub(r"\s+", " ", title).strip(" ・/／|")
     if len(title) < 2 or (v.skip_title and re.search(v.skip_title, title, re.I)):
         return None
@@ -216,7 +219,7 @@ def to_gig(v: Venue, s: Show, page_url: str) -> Optional[Gig]:
     note = s.note if v.reader != "clubasia" else None
     if v.reader == "clubasia" and s.note:
         tags += [t.strip() for t in s.note.split(",")]
-    v_en, v_ja = v.name, v.name_ja
+    v_en, v_ja = venue_name, v.name_ja
     return Gig(
         date=s.date, title=title[:160], venue=v_en, venue_ja=v_ja,
         area=v.area, open_time=s.open_time, start_time=s.start_time,

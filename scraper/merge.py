@@ -104,6 +104,23 @@ def merge(gigs: list[Gig]) -> list[Gig]:
                 if same_venue(a, b) and (same_show(a, b) or same_time(a, b)):
                     parent[find(i)] = find(j)
 
+    # A guide and the venue's own site each list exactly one show at that venue that day:
+    # it's the same show, even when one writes the names in Japanese and the other in English.
+    def is_site(g):
+        return any(s.name.endswith(" website") for s in g.sources)
+    slots = defaultdict(lambda: defaultdict(list))
+    for i, g in enumerate(gigs):
+        slots[(g.date, venue_tokens(g.venue))][find(i)].append(g)
+    for clusters in slots.values():
+        if len(clusters) != 2:
+            continue
+        (r1, c1), (r2, c2) = clusters.items()
+        s1, s2 = any(is_site(g) for g in c1), any(is_site(g) for g in c2)
+        if s1 != s2 and not any(is_site(g) for g in (c2 if s1 else c1)):
+            times = {t for g in c1 + c2 for t in (g.start_time,) if t}
+            if len(times) <= 1:                      # no conflicting start times
+                parent[find(r1)] = find(r2)
+
     groups = defaultdict(list)
     for i in range(len(gigs)):
         groups[find(i)].append(gigs[i])

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import logging
 import re
-from datetime import date
+from datetime import date, timedelta
 
 from bs4 import BeautifulSoup
 
@@ -19,7 +19,7 @@ from ..textutil import nfkc, parse_time, to_english
 log = logging.getLogger(__name__)
 NAME = "Concert Square"
 BASE = "https://en.concertsquare.jp"
-PAGES = [BASE + "/concert/prefecture/toukyo?page={p}", BASE + "/concert/genre/hougaku?page={p}"]
+PAGES = [BASE + "/concert/prefecture/toukyo?page={p}", BASE + "/concert/prefecture/toukyo/hougaku?page={p}"]
 SKIP_TAGS = {"professional", "amateur", "student", "welcoming children", "preschool children ok", "free admission"}
 
 
@@ -31,49 +31,55 @@ def _tags(cats: list[str]) -> list[str]:
 
 
 def parse(html: str) -> list[Gig]:
+    """The date-ordered result list (10 per page). The featured carousels on every page are ignored."""
     soup = BeautifulSoup(html, "lxml")
     out = []
-    for a in soup.select(".article"):
+    for a in soup.select(".search-result-list li.article"):
         title = a.select_one(".article-title")
-        d = a.select_one(".meta-open-date .date") or a.select_one(".date")
-        if not title or not d:
+        y = a.select_one(".concert-year")
+        md = a.select_one(".concert-date .mon_date")
+        if not title or not y or not md:
             continue
-        m = re.match(r"(20\d\d)/(\d{1,2})/(\d{1,2})", d.get_text(strip=True))
-        if not m:
+        m = re.match(r"(\d{1,2})/(\d{1,2})", md.get_text(strip=True))
+        yr = re.search(r"20\d\d", y.get_text())
+        if not m or not yr:
             continue
-        prov = a.select_one(".prov")
-        if prov and prov.get_text(strip=True).lower() not in ("tokyo",):
+        prefs = [c.get_text(strip=True).lower() for c in a.select("a.map-link")]
+        if prefs and "tokyo" not in prefs:
             continue
-        hall = a.select_one(".building")
-        t = a.select_one(".meta-open-date .time")
-        cats = [nfkc(c.get_text(strip=True)) for c in a.select(".cat")]
+        hall = a.select_one(".meta-cat a.cat-link")
+        t = a.select_one(".start-time")
+        cats = [nfkc(c.get_text(strip=True)) for c in a.select(".meta-tag .tag")]
+        desc = a.select_one(".concert-detail p")
         link = title.find("a")
         url = BASE + link["href"] if link and link.get("href", "").startswith("/") else BASE
         name = nfkc(title.get_text(" ", strip=True))
         venue = nfkc(hall.get_text(" ", strip=True)) if hall else "Venue tbc"
         v_en, v_ja = to_english(venue)
-        out.append(Gig(date=f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}", title=name,
+        out.append(Gig(date=f"{yr.group(0)}-{int(m.group(1)):02d}-{int(m.group(2)):02d}", title=name,
                        venue=v_en, venue_ja=v_ja, start_time=parse_time(t.get_text()) if t else None,
                        free=any(c.lower() == "free admission" for c in cats),
                        artists=[name], tags=_tags(cats),
+                       note=nfkc(desc.get_text(" ", strip=True))[:140] if desc else None,
                        sources=[Source(NAME, url)]))
     return out
 
 
 def scrape(http, cfg: dict) -> list[Gig]:
-    today = (cfg.get("today") or date.today()).isoformat()
-    pages = int(cfg.get("concertsquare_pages", 8))
+    today = cfg.get("today") or date.today()
+    horizon = (today + timedelta(days=int(cfg.get("days_ahead", 60)))).isoformat()
+    max_pages = int(cfg.get("concertsquare_pages", 40))
     gigs = {}
-    for tmpl in PAGES:
-        for p in range(1, pages + 1):
+    for tmpl, limit in ((PAGES[0], max_pages), (PAGES[1], 6)):
+        for p in range(1, limit + 1):
             html = http.text(tmpl.format(p=p))
             found = parse(html) if html else []
-            if not html or not BeautifulSoup(html, "lxml").select(".article"):
+            if not found:
                 break
             for g in found:
-                if g.date >= today:
+                if today.isoformat() <= g.date <= horizon:
                     gigs[g.sources[0].url] = g
-            if tmpl.endswith("hougaku?page={p}") and p >= 3:
+            if tmpl == PAGES[0] and found[-1].date > horizon:      # date order: the rest is later
                 break
     log.info("Concert Square: %d Tokyo concerts", len(gigs))
     return list(gigs.values())
