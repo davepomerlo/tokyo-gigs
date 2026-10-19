@@ -1,36 +1,78 @@
 {
-  "generated": "2026-10-19T05:25+09:00",
-  "total_listings": 289,
-  "after_merge": 258,
-  "requests": 36,
+  "generated": "2026-10-19T21:55+09:00",
+  "total_listings": 1132,
+  "after_merge": 1054,
+  "requests": 83,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 83,
-      "seconds": 600.4,
+      "gigs": 250,
+      "seconds": 482.4,
       "error": null,
-      "used_previous_results": false
+      "used_previous_results": false,
+      "notes": [
+        "page 1: 50 gigs",
+        "page 2: 50 gigs",
+        "page 3: 50 gigs",
+        "page 4: 50 gigs",
+        "page 5: 50 gigs"
+      ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
       "gigs": 131,
-      "seconds": 0.6,
+      "seconds": 0.8,
       "error": null,
-      "used_previous_results": false
+      "used_previous_results": false,
+      "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 132,
-      "seconds": 42.3,
+      "gigs": 136,
+      "seconds": 42.5,
       "error": null,
-      "used_previous_results": false
+      "used_previous_results": false,
+      "notes": null
     },
     "jsonld": {
       "name": "Venue pages (JSON-LD)",
       "gigs": 0,
       "seconds": 0.0,
       "error": null,
-      "used_previous_results": false
+      "used_previous_results": false,
+      "notes": null
+    },
+    "venues": {
+      "name": "Venue websites",
+      "gigs": 595,
+      "seconds": 56.6,
+      "error": null,
+      "used_previous_results": false,
+      "notes": null
+    },
+    "clubberia": {
+      "name": "Clubberia",
+      "gigs": 78,
+      "seconds": 9.0,
+      "error": null,
+      "used_previous_results": false,
+      "notes": null
+    },
+    "concertsquare": {
+      "name": "Concert Square",
+      "gigs": 25,
+      "seconds": 15.9,
+      "error": null,
+      "used_previous_results": false,
+      "notes": null
+    },
+    "reggaelife": {
+      "name": "Reggae Life",
+      "gigs": 10,
+      "seconds": 1.0,
+      "error": null,
+      "used_previous_results": false,
+      "notes": null
     }
   }
 }
