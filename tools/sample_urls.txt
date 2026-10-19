@@ -1,37 +1,9 @@
-# Round 2. "slug url" per line; the sampler also follows up to 2 schedule-looking links per site.
-# --- next month's pages for jazz venues found in round 1 ---
-pitinn-next https://pit-inn.com/next-schedule/
-pitinn-nextday https://pit-inn.com/next-schedule-day/
-jirokichi-next https://jirokichi.net/2026/11
-yoyoginaru-next https://yoyogi-naru.com/live112026/
-jzbrat-next https://www.jzbrat.com/liveinfo/2026/11/
-bluesalley https://www.bluesalley.co.jp/schedule/live.html
-bluesalley-next https://www.bluesalley.co.jp/schedule/live.html?disp_date=202611
-sometime-next https://www.sometime.co.jp/sometime/live2.html
-cottonclub-next https://reserve.cottonclubjapan.co.jp/reserve/schedule/?ym=202611
-www-next https://www-shibuya.jp/schedule/202611.php
-contact-next https://www.contacttokyo.com/schedule/2026-11/
-# --- western classical / contemporary ---
-bachtrack https://bachtrack.com/city/toki
-concertsquare https://www.concertsquare.jp/
-concertsquare-en https://en.concertsquare.jp/
-suntoryhall https://www.suntory.co.jp/suntoryhall/schedule/
-operacity https://www.operacity.jp/concert/calendar/
-tbunka https://www.t-bunka.jp/stage/
-kioihall https://kioihall.or.jp/schedule/
-hakuju https://www.hakujuhall.jp/schedule/
-ojihall https://www.ojihall.jp/concert/
-musashino https://www.musashino.or.jp/
-geigeki https://www.geigeki.jp/performance/
-triphony https://www.triphony.com/concert/
-eplus-modern https://eplus.jp/sf/classic/mordern-music
-# --- traditional Japanese ---
-ntj https://www.ntj.jac.go.jp/schedule/
-nohgaku https://www.ntj.jac.go.jp/nou/
-kanze https://kanze.net/schedule/
-# --- world music ---
-eplus-world https://eplus.jp/sf/live/worldmusic/tokyo
-goethe https://www.goethe.de/ins/jp/ja/ver.cfm
-cervantes https://tokio.cervantes.es/jp/cultura/
-dzumi https://dzumi.jp/
-starpines https://mandala.gr.jp/spc/
+# Round 3
+clubberia-tokyo https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo
+clubberia-tokyo-hiphop https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo&genre_cd=hiphop
+csq-tokyo https://en.concertsquare.jp/concert/prefecture/toukyo
+csq-tokyo-p2 https://en.concertsquare.jp/concert/prefecture/toukyo?page=2
+csq-hougaku https://en.concertsquare.jp/concert/genre/hougaku
+operacity-en https://www.operacity.jp/en/concert/calendar/?calendar=0
+operacity-ja https://www.operacity.jp/concert/calendar/?calendar=0
+reggaelife-kanto https://reggaelife.jp/calendar/events.pl/area/3/
