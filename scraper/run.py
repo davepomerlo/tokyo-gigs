@@ -17,7 +17,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from .http import Http
-from .merge import gig_id, merge
+from .merge import fill_from_artists, gig_id, merge
 from .models import Gig, Source
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,6 +29,10 @@ SOURCES = {
     "tokyodross": "Tokyo Dross",
     "songkick": "Songkick",
     "jsonld": "Venue pages (JSON-LD)",
+    "venues": "Venue websites",
+    "clubberia": "Clubberia",
+    "concertsquare": "Concert Square",
+    "reggaelife": "Reggae Life",
 }
 
 
@@ -78,19 +82,37 @@ def main(argv=None) -> int:
             log.exception("%s failed", key)
             gigs, err = [], f"{type(e).__name__}: {e}"
         used_fallback = False
-        if gigs:
+        fresh_enough = last_good.exists() and (time.time() - last_good.stat().st_mtime) < 3 * 86400
+        prev = [g for g in _load_gigs(last_good) if (g.end_date or g.date) >= today.isoformat()] if fresh_enough else []
+        if gigs and len(gigs) >= 0.6 * len(prev):
             last_good.write_text(json.dumps([g.to_dict() for g in gigs], ensure_ascii=False))
-        elif last_good.exists() and (time.time() - last_good.stat().st_mtime) < 3 * 86400:
-            gigs = [g for g in _load_gigs(last_good) if (g.end_date or g.date) >= today.isoformat()]
+        elif gigs and prev:
+            # a partial read (a page failed): keep the previous run's gigs beyond the dates we got
+            reach = max(g.date for g in gigs)
+            extra = [g for g in prev if g.date > reach]
+            log.warning("%s returned %d gigs (last good run: %d) - keeping %d later gigs from that run",
+                        key, len(gigs), len(prev), len(extra))
+            gigs += extra
+            used_fallback = bool(extra)
+        elif prev:
+            gigs = prev
             used_fallback = True
             log.warning("%s returned nothing - reusing %d gigs from last good run", key, len(gigs))
         status[key] = {"name": SOURCES[key], "gigs": len(gigs), "seconds": round(time.time() - t0, 1),
-                       "error": err, "used_previous_results": used_fallback}
+                       "error": err, "used_previous_results": used_fallback,
+                       "notes": cfg.get("_notes", {}).get(key)}
         all_gigs += gigs
 
     horizon = (today + timedelta(days=int(cfg.get("days_ahead", 60)))).isoformat()
     all_gigs = [g for g in all_gigs if (g.end_date or g.date) >= today.isoformat() and g.date <= horizon]
     merged = merge(all_gigs)
+    mem_path = cache_dir / "artist_genres.json"
+    try:
+        memory = json.loads(mem_path.read_text())
+    except Exception:
+        memory = {}
+    memory = fill_from_artists(merged, memory)
+    mem_path.write_text(json.dumps(memory, ensure_ascii=False, separators=(",", ":")))
     merged.sort(key=lambda g: (g.date, g.start_time or g.open_time or "99", g.venue.lower()))
 
     out_dir = ROOT / "docs" / "data"

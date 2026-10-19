@@ -6,18 +6,21 @@ import re
 from collections import defaultdict
 from datetime import date, timedelta
 
-from .genres import bucket_tags, guess_from_venue
+from .genres import bucket_tags, guess_from_venue, title_genres
 from .models import Gig, Source
 from .textutil import PLACES, nfkc
 
-PRIORITY = {"Tokyo Gig Guide": 1, "Tokyo Dross": 2, "Songkick": 3}
+PRIORITY = {"Tokyo Gig Guide": 1, "Tokyo Dross": 2, "Concert Square": 4, "Clubberia": 4, "Reggae Life": 5, "Songkick": 6}
+VENUE_SITE = 3          # a venue's own website: after the two guides (English titles), before the rest
 VENUE_STOP = {"club", "the", "tokyo", "live", "house", "livehouse", "spotify", "hall", "space",
               "studio", "bar", "cafe", "and", "&", "東京"} | {p.lower() for p in PLACES.values()} \
     | {"shimokita", "minami", "higashi", "nishi", "kita"}
 
 
 def _prio(g: Gig) -> int:
-    return min(PRIORITY.get(s.name, 9) for s in g.sources) if g.sources else 9
+    if not g.sources:
+        return 9
+    return min(PRIORITY.get(s.name, VENUE_SITE if s.name.endswith(" website") else 8) for s in g.sources)
 
 
 def venue_tokens(name: str) -> frozenset[str]:
@@ -45,6 +48,15 @@ def _norm(s: str) -> str:
 def _words(s: str) -> set[str]:
     return {w for w in re.findall(r"[0-9a-z぀-ヿ一-鿿]{3,}", nfkc(s).lower())
             if w not in {"and", "the", "more", "with", "feat", "vol", "live", "presents", "tour", "japan", "2026", "2027"}}
+
+
+def same_time(a: Gig, b: Gig) -> bool:
+    """Same venue, same day, same doors or start time: the same show even if one site writes the
+    names in Japanese and the other in English."""
+    for x, y in ((a.start_time, b.start_time), (a.open_time, b.open_time)):
+        if x and y and x == y:
+            return True
+    return False
 
 
 def same_show(a: Gig, b: Gig) -> bool:
@@ -89,7 +101,7 @@ def merge(gigs: list[Gig]) -> list[Gig]:
                 a, b = gigs[i], gigs[j]
                 if {s.name for s in a.sources} == {s.name for s in b.sources}:
                     continue   # never merge two listings from the same site
-                if same_venue(a, b) and same_show(a, b):
+                if same_venue(a, b) and (same_show(a, b) or same_time(a, b)):
                     parent[find(i)] = find(j)
 
     groups = defaultdict(list)
@@ -135,6 +147,8 @@ def combine(gs: list[Gig]) -> Gig:
     out.sources = srcs
     out.genres = bucket_tags(out.tags, out.title)
     if not out.genres:
+        out.genres = title_genres(" ".join([out.title] + out.artists[:8]))
+    if not out.genres:
         out.genres = guess_from_venue(out.venue)
         out.genre_guessed = bool(out.genres)
     if not out.genres:
@@ -145,3 +159,40 @@ def combine(gs: list[Gig]) -> Gig:
 def gig_id(g: Gig) -> str:
     key = f"{g.date}|{'-'.join(sorted(venue_tokens(g.venue)))}|{_norm(g.title)[:40]}"
     return hashlib.sha1(key.encode()).hexdigest()[:10]
+
+
+ARTIST_STOP = {"more", "guest", "guests", "and", "others", "djs", "dj", "live", "band", "trio", "duo", "quartet",
+               "solo", "special", "session", "jam", "tba", "tbc", "open", "various", "secret"}
+
+
+def fill_from_artists(gigs: list[Gig], memory: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Give untagged gigs the genres their artists have elsewhere (today's listings or past scans).
+
+    Returns the updated artist -> genres memory, which run.py keeps in data/cache/.
+    """
+    from collections import Counter, defaultdict
+    seen: dict[str, Counter] = defaultdict(Counter)
+    for g in gigs:
+        if g.genre_guessed or g.genres in ([], ["Other"]):
+            continue
+        for a in g.artists[:8]:
+            k = _norm(a)
+            if len(k) >= 4 and k not in ARTIST_STOP:
+                seen[k].update(x for x in g.genres if x != "Other")
+    mem = dict(memory)
+    for k, c in seen.items():
+        mem[k] = [x for x, _ in c.most_common(2)]
+    for g in gigs:
+        if g.genres not in (["Other"], []) and not g.genre_guessed:
+            continue
+        votes: Counter = Counter()
+        for a in g.artists[:8]:
+            k = _norm(a)
+            if k in mem and k not in ARTIST_STOP:
+                votes.update(mem[k])
+        if votes:
+            g.genres = [x for x, _ in votes.most_common(2)]
+            g.genre_guessed = False
+    if len(mem) > 30000:                       # keep the file small
+        mem = dict(list(mem.items())[-30000:])
+    return mem

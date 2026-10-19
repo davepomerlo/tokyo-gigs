@@ -27,7 +27,7 @@ from .textutil import nfkc, parse_price, parse_time
 WD_EN = {"mon": 0, "tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6}
 WD_JA = {"月": 0, "火": 1, "水": 2, "木": 3, "金": 4, "土": 5, "日": 6}
 # A Japanese weekday only counts in brackets '(月)' or as '月曜': a bare 月 is usually 'month'
-WD = (r"(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?(?![a-z])|"
+WD = (r"[\(（\[]?\s*(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?(?![a-z])\s*[\)）\]]?|"
       r"[\(（\[]\s*[月火水木金土日](?:曜日?)?(?:・?祝|・?休)?\s*[\)）\]]|[月火水木金土日]曜日?")
 WD_RE = re.compile(r"^\s*(" + WD + r")", re.I)
 
@@ -41,6 +41,9 @@ MONTH_HEAD = re.compile(
     r"(?:(?P<y>20\d\d)\s*[./年\-]\s*(?P<m>\d{1,2})(?!\d)|(?P<m2>\d{1,2})\s*月(?!\s*\d)|"
     r"\b(?P<en>jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(?P<y2>20\d\d)?)", re.I)
 EN_MON = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+_MON = r"(?P<mon>jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?"
+EN_DM = re.compile(r"^(?P<d>\d{1,2})(?:st|nd|rd|th)?\s+" + _MON + r"(?:\s*,?\s*(?P<y>20\d\d))?(?=$|[\s(（,])", re.I)
+EN_MD = re.compile(r"^(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?,?\s+)?" + _MON + r"\s+(?P<d>\d{1,2})(?:st|nd|rd|th)?(?:\s*,?\s*(?P<y>20\d\d))?(?=$|[\s(（,])", re.I)
 
 CLOSED = re.compile(r"お休み|定休|休業|休み|店休|臨時休|貸切|貸し切り|private|closed|no live|ライブなし|close\b|holiday|クローズ", re.I)
 NOISE = re.compile(
@@ -121,7 +124,20 @@ def _resolve(y: Optional[int], m: int, d: int, wd: int, ctx: date) -> Optional[d
     return None
 
 
-def find_dates(lines: list[str], ctx: date) -> list[tuple[int, int, date, str]]:
+def _nearest(y: Optional[int], m: int, d: int, ctx: date) -> Optional[date]:
+    """Without a weekday to check: the year that puts (m, d) nearest the page's month."""
+    best = None
+    for yy in ([y] if y else [ctx.year - 1, ctx.year, ctx.year + 1]):
+        try:
+            dt = date(yy, m, d)
+        except ValueError:
+            continue
+        if best is None or abs((dt - ctx).days) < abs((best - ctx).days):
+            best = dt
+    return best if best and abs((best - ctx).days) < 200 else None
+
+
+def find_dates(lines: list[str], ctx: date, require_weekday: bool = True) -> list[tuple[int, int, date, str]]:
     """Return (line_index, lines_used, date, rest_of_line) for each validated date heading."""
     out = []
     month, year = ctx.month, ctx.year
@@ -138,6 +154,22 @@ def find_dates(lines: list[str], ctx: date) -> list[tuple[int, int, date, str]]:
                 month = EN_MON[mh.group("en")[:3].lower()]
                 if mh.group("y2"):
                     year = int(mh.group("y2"))
+        en = EN_DM.match(line) or EN_MD.match(line)
+        if en and len(line) <= 300:
+            d, mo = int(en.group("d")), EN_MON[en.group("mon")[:3].lower()]
+            yr = int(en.group("y")) if en.group("y") else None
+            rest = line[en.end():].strip(" .,")
+            lead = re.match(r"^(mon|tue|wed|thu|fri|sat|sun)", line, re.I)
+            wd = WD_EN[lead.group(1).lower()] if lead else _wd(rest)
+            if wd is not None and not lead:
+                rest = WD_RE.sub("", rest, count=1).lstrip(" )）]").strip()
+            if wd is None and require_weekday:
+                continue
+            dt = _resolve(yr, mo, d, wd, ctx) if wd is not None else _nearest(yr, mo, d, ctx)
+            if dt:
+                out.append((i, 1, dt, rest))
+                last = dt
+            continue
         m = DATE_HEAD.match(line)
         if not m or len(line) > 300:
             continue
@@ -150,22 +182,24 @@ def find_dates(lines: list[str], ctx: date) -> list[tuple[int, int, date, str]]:
         used = 1
         wd = _wd(rest)
         if wd is not None:
-            rest = WD_RE.sub("", rest, count=1).strip(" )）]")
+            rest = WD_RE.sub("", rest, count=1).lstrip(" )）]").strip()
         else:
             # weekday on the next line ('10/1' / 'Thu'), possibly after a lone '/'
             for k in (1, 2):
                 if i + k < len(lines) and len(lines[i + k]) <= 14:
                     wd = _wd(lines[i + k])
                     if wd is not None:
-                        rest_next = WD_RE.sub("", lines[i + k], count=1).strip(" )）]")
+                        rest_next = WD_RE.sub("", lines[i + k], count=1).lstrip(" )）]").strip()
                         rest = (rest + " " + rest_next).strip()
                         used = k + 1
                         break
                     if not re.fullmatch(r"[/\-.\s]*|\d{1,2}", lines[i + k]):
                         break
-        if wd is None:
+        if wd is None and (require_weekday or not m.group("m")):
             continue
-        if m.group("m"):
+        if m.group("m") and wd is None:
+            dt = _nearest(yr, mo, d, ctx)
+        elif m.group("m"):
             dt = _resolve(yr, mo, d, wd, ctx)
         else:
             # a bare day number: try the month we're in, the heading's month, the page's month
@@ -199,6 +233,10 @@ def _times(text: str) -> tuple[Optional[str], Optional[str]]:
     op = parse_time(o.group(1)) if o else None
     st = parse_time(s.group(1)) if s else None
     if not op and not st:
+        pm = re.search(r"(?<![\d:])(\d{1,2})(?::(\d{2}))?\s*(pm|am)\b", text, re.I)
+        if pm:
+            st = parse_time(f"{pm.group(1)}:{pm.group(2) or '00'}{pm.group(3)}")
+    if not op and not st:
         b = BARE_TIME.search(text)
         if b:
             st = parse_time(f"{b.group(1)}:{b.group(2) or '00'}")
@@ -212,6 +250,7 @@ def _times(text: str) -> tuple[Optional[str], Optional[str]]:
 
 def _prices(text: str) -> tuple[Optional[int], Optional[int], Optional[str], bool]:
     t = text.replace("♪", "¥")
+    t = re.sub(r"(?<![¥￥\d,])\b20[0-4]\d\b(?!\s*(?:円|yen|-|〜|～|/\s*[¥￥]))", " ", t)   # years, not prices
     seg = [s for s in re.split(r"(?<=[\)）])\s+|\s{2,}|/(?=\s*(?:当日|door|day))", t) if PRICE_HINT.search(s)]
     joined = " ".join(seg) if seg else ""
     if not joined:
@@ -246,9 +285,10 @@ def _is_meta(line: str) -> bool:
 
 
 def parse_schedule(html: str, ctx: date, *, start_after: str | None = None, stop_at: str | None = None,
-                   split_on_time: bool | None = None, max_lines: int = 14) -> list[Show]:
+                   split_on_time: bool | None = None, max_lines: int = 14, require_weekday: bool = True,
+                   title_strip: str | None = None, skip: str | None = None) -> list[Show]:
     lines = page_lines(html, start_after, stop_at)
-    heads = find_dates(lines, ctx)
+    heads = find_dates(lines, ctx, require_weekday)
     shows: list[Show] = []
     for n, (i, used, dt, rest) in enumerate(heads):
         end = heads[n + 1][0] if n + 1 < len(heads) else min(len(lines), i + used + max_lines)
@@ -278,6 +318,13 @@ def parse_schedule(html: str, ctx: date, *, start_after: str | None = None, stop
             if ch is chunks[0] and rest and head and len(head) >= 2 and head == rest[:len(head)] and not _is_meta(head) and head not in content:
                 content.insert(0, head)
             if not content:
+                continue
+            if title_strip:
+                content = [re.sub(title_strip, "", c, flags=re.I).strip(" ・/／:：") for c in content]
+                content = [c for c in content if c]
+                if not content:
+                    continue
+            if skip and re.search(skip, " ".join(content[:2]), re.I):
                 continue
             title = content[0]
             # an inline price/time on the title line (Jirokichi): keep only the act

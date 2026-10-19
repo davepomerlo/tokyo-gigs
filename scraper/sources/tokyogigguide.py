@@ -236,9 +236,15 @@ def scrape(http, cfg: dict) -> list[Gig]:
     horizon = cfg.get("days_ahead", 60)
     gigs: list[Gig] = []
     for p in range(max_pages):
-        html = http.text(LIST_URL.format(start=p * PAGE_SIZE))
+        url = LIST_URL.format(start=p * PAGE_SIZE)
+        html = http.text(url)
+        if not html and p > 0:                     # one more try after the site's crawl delay
+            html = http.text(url)
         page = parse_list_page(html, today) if html else []
         log.info("TGG page %d: %d gigs", p + 1, len(page))
+        last = getattr(http, "last", {}) or {}
+        cfg.setdefault("_notes", {}).setdefault("tokyogigguide", []).append(
+            f"page {p + 1}: {len(page)} gigs" + ("" if page else f" (status {last.get('status')}, {last.get('error')})"))
         if not page:
             if p == 0:
                 _save_debug(http, cfg)

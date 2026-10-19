@@ -9,11 +9,26 @@ on a phone.
 | [Tokyo Gig Guide](https://www.tokyogigguide.com/en/gigs) | The backbone: hundreds of livehouse gigs with doors time, advance/door price, venue, area and genre tags | "All gigs" list pages, 50 gigs each |
 | [Tokyo Dross](https://tokyodross.blogspot.com/) | Curated underground/experimental/international picks with direct ticket links | Monthly "Tokyo Gigs" posts via the Blogger feed |
 | [Songkick](https://www.songkick.com/metro-areas/30717-japan-tokyo) | Touring and bigger shows, start times | schema.org data on the listing pages; genres from its genre filters |
+| **Venue websites** (21 schedules) | Jazz: Shinjuku Pit Inn (evening + daytime), Blue Note Tokyo, Cotton Club, JZ Brat, Sometime, Naru (Yoyogi, Ochanomizu), KO-KO, Aketa no Mise, JIROKICHI. Improvised/experimental: Knuttel House, Polaris, Permian, Nanahari, Velvetsun, Knock. Livehouses/clubs: WWW, clubasia, Live Cafe Rooster. Hall: Sumida Triphony | Each venue's own monthly schedule (this month and next), read by `scraper/venue_parse.py` |
+| [Clubberia](https://clubberia.com/ja/events/) | Club nights incl. hip-hop/R&B (Harlem, Womb, Enter...) with genre tags | Tokyo week pages |
+| [Concert Square](https://en.concertsquare.jp/concert/prefecture/toukyo) | Classical, contemporary and 邦楽 traditional Japanese concerts, in English | Tokyo list + hōgaku pages |
+| [Reggae Life](https://reggaelife.jp/) | Reggae / dancehall nights | Kantō page, Tokyo entries |
 | Any venue page with schema.org Event data | Whatever you add | Put the URL in `jsonld_pages` in `config.json` |
 
 The same gig listed on several sites is merged into one entry (same day, same venue,
 overlapping artists). Times prefer Tokyo Gig Guide, ticket links prefer Tokyo Dross,
 and every entry links back to each site it came from.
+
+Genres: site tags first; otherwise words in the title or line-up (English and Japanese, e.g.
+三味線, リサイタル, Jam Session); otherwise the genre the same artist has in other listings
+(remembered across scans in `data/cache/artist_genres.json`); otherwise a guess from the venue
+(shown as a hollow dot).
+
+Checked but not used: Nightlife Tokyo, Hako Gallery and Bandsintown (their robots.txt asks
+bots not to read them); Suntory Hall, Oji Hall, Bachtrack, Goethe-Institut, e+ (refuse automated
+requests); Tokyo Opera City (calendar built by script; its concerts appear on Concert Square);
+Harlem (schedule is images); Body & Soul (closed Sept 2026); Eventworld (resale prices).
+Blues Alley Japan's page text is garbled at the source, so it's off for now.
 
 Not included: **Japan Gigs** only posts flyer images on Instagram/X, so there's nothing
 to read reliably. **e+, Pia, Lawson Ticket** are heavily scripted and block scrapers.
@@ -101,6 +116,13 @@ cd docs && python -m http.server             # view at http://localhost:8000
 
 `config.json` options: `days_ahead` (how far ahead to list), `delay_seconds` (minimum gap
 between requests to one site), `songkick_pages`, `songkick_genres`, `jsonld_pages`.
+
+### Adding a venue
+
+Add an entry to `VENUES` in `scraper/sources/venues.py` (name, area, schedule URL with
+`{y}`/`{mm}` for monthly pages, genre tags), save a copy of the page in
+`tests/fixtures/venues/` and add a test. `tools/sample_urls.txt` + the **Sample source pages**
+workflow fetch real copies of candidate pages to the `samples` branch.
 
 ### Adding a source
 
