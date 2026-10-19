@@ -1,0 +1,233 @@
+[
+ {
+  "name": "clubberia-tokyo",
+  "url": "https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo",
+  "crawl_delay": 3.0,
+  "bytes": 129345,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "clubberia-tokyo-follow1",
+  "url": "https://clubberia.com/ja/events/?schedule_date=2026-10-18&region_cd=tokyo",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_date=2026-10-18&region_cd=tokyo",
+  "crawl_delay": 3.0,
+  "bytes": 44818,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "clubberia-tokyo-follow2",
+  "url": "https://clubberia.com/ja/events/?schedule_date=2026-10-19&region_cd=tokyo",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_date=2026-10-19&region_cd=tokyo",
+  "crawl_delay": 3.0,
+  "bytes": 44801,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "clubberia-tokyo-hiphop",
+  "url": "https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo&genre_cd=hiphop",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_start=2026-10-18&region_cd=tokyo&genre_cd=hiphop",
+  "crawl_delay": 3.0,
+  "bytes": 61339,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "clubberia-tokyo-hiphop-follow1",
+  "url": "https://clubberia.com/ja/events/?schedule_date=2026-10-18&region_cd=tokyo&genre_cd=hiphop",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_date=2026-10-18&region_cd=tokyo&genre_cd=hiphop",
+  "crawl_delay": 3.0,
+  "bytes": 41738,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "clubberia-tokyo-hiphop-follow2",
+  "url": "https://clubberia.com/ja/events/?schedule_date=2026-10-19&region_cd=tokyo&genre_cd=hiphop",
+  "status": 200,
+  "error": null,
+  "final_url": "https://clubberia.com/ja/events/?schedule_date=2026-10-19&region_cd=tokyo&genre_cd=hiphop",
+  "crawl_delay": 3.0,
+  "bytes": 41753,
+  "has_jsonld": false,
+  "title": "EVENTS | クラベリア"
+ },
+ {
+  "name": "csq-tokyo",
+  "url": "https://en.concertsquare.jp/concert/prefecture/toukyo",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/concert/prefecture/toukyo",
+  "crawl_delay": 3.0,
+  "bytes": 133143,
+  "has_jsonld": false,
+  "title": "Concerts in Tokyo - Concert Square / Find classical music concerts in Japan"
+ },
+ {
+  "name": "csq-tokyo-follow1",
+  "url": "https://en.concertsquare.jp/blog/2026/202607041803613.html",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/blog/2026/202607041803613.html",
+  "crawl_delay": 3.0,
+  "bytes": 30132,
+  "has_jsonld": false,
+  "title": "Chanson Française 15: To Live - Concert Square / Find classical music concerts in Japan"
+ },
+ {
+  "name": "csq-tokyo-follow2",
+  "url": "https://en.concertsquare.jp/blog/2026/202609094758550.html",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/blog/2026/202609094758550.html",
+  "crawl_delay": 3.0,
+  "bytes": 29860,
+  "has_jsonld": false,
+  "title": "Let's Sing About Fall | \"Sing-Along Café\" Featuring Live Performances by Professional Musicians - Concert Square / Find "
+ },
+ {
+  "name": "csq-tokyo-p2",
+  "url": "https://en.concertsquare.jp/concert/prefecture/toukyo?page=2",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/concert/prefecture/toukyo?page=2",
+  "crawl_delay": 3.0,
+  "bytes": 132753,
+  "has_jsonld": false,
+  "title": "Concerts in Tokyo - Concert Square / Find classical music concerts in Japan"
+ },
+ {
+  "name": "csq-tokyo-p2-follow1",
+  "url": "https://en.concertsquare.jp/concert/prefecture/toukyo/event",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/concert/prefecture/toukyo/event",
+  "crawl_delay": 3.0,
+  "bytes": 132338,
+  "has_jsonld": false,
+  "title": "Concerts tagged with Lectures and Workshops (Tokyo) - Concert Square / Find classical music concerts in Japan"
+ },
+ {
+  "name": "csq-hougaku",
+  "url": "https://en.concertsquare.jp/concert/genre/hougaku",
+  "status": 200,
+  "error": null,
+  "final_url": "https://en.concertsquare.jp/concert/genre/hougaku",
+  "crawl_delay": 3.0,
+  "bytes": 130456,
+  "has_jsonld": false,
+  "title": "Concerts tagged with Traditional Japanese Music - Concert Square / Find classical music concerts in Japan"
+ },
+ {
+  "name": "operacity-en",
+  "url": "https://www.operacity.jp/en/concert/calendar/?calendar=0",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/en/concert/calendar/?calendar=0",
+  "crawl_delay": 3.0,
+  "bytes": 27557,
+  "has_jsonld": false,
+  "title": "Concert Calendar | Tokyo Opera City Concert Hall"
+ },
+ {
+  "name": "operacity-en-follow1",
+  "url": "https://www.operacity.jp/en/concert/calendar/",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/en/concert/calendar/",
+  "crawl_delay": 3.0,
+  "bytes": 27535,
+  "has_jsonld": false,
+  "title": "Concert Calendar | Tokyo Opera City Concert Hall"
+ },
+ {
+  "name": "operacity-en-follow2",
+  "url": "https://www.operacity.jp/concert/calendar/?calendar=0",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/concert/calendar/?calendar=0",
+  "crawl_delay": 3.0,
+  "bytes": 36702,
+  "has_jsonld": false,
+  "title": "コンサートカレンダー | 東京オペラシティ コンサートホール／リサイタルホール"
+ },
+ {
+  "name": "operacity-ja",
+  "url": "https://www.operacity.jp/concert/calendar/?calendar=0",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/concert/calendar/?calendar=0",
+  "crawl_delay": 3.0,
+  "bytes": 36702,
+  "has_jsonld": false,
+  "title": "コンサートカレンダー | 東京オペラシティ コンサートホール／リサイタルホール"
+ },
+ {
+  "name": "operacity-ja-follow1",
+  "url": "https://www.operacity.jp/concert/calendar/",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/concert/calendar/",
+  "crawl_delay": 3.0,
+  "bytes": 36680,
+  "has_jsonld": false,
+  "title": "コンサートカレンダー | 東京オペラシティ コンサートホール／リサイタルホール"
+ },
+ {
+  "name": "operacity-ja-follow2",
+  "url": "https://www.operacity.jp/concert/calendar/onair.php",
+  "status": 200,
+  "error": null,
+  "final_url": "https://www.operacity.jp/concert/calendar/onair.php",
+  "crawl_delay": 3.0,
+  "bytes": 34651,
+  "has_jsonld": false,
+  "title": "On Air情報 | 東京オペラシティ コンサートホール／リサイタルホール"
+ },
+ {
+  "name": "reggaelife-kanto",
+  "url": "https://reggaelife.jp/calendar/events.pl/area/3/",
+  "status": 200,
+  "error": null,
+  "final_url": "https://reggaelife.jp/calendar/events.pl/area/3/",
+  "crawl_delay": 3.0,
+  "bytes": 33265,
+  "has_jsonld": false,
+  "title": "関東のレゲエイベント - REGGAE LIFE [レゲエライフ]"
+ },
+ {
+  "name": "reggaelife-kanto-follow1",
+  "url": "https://reggaelife.jp/calendar/events.pl/area/0/",
+  "status": 200,
+  "error": null,
+  "final_url": "https://reggaelife.jp/calendar/events.pl/area/0/",
+  "crawl_delay": 3.0,
+  "bytes": 109415,
+  "has_jsonld": false,
+  "title": "全国のレゲエイベント - REGGAE LIFE [レゲエライフ]"
+ },
+ {
+  "name": "reggaelife-kanto-follow2",
+  "url": "https://reggaelife.jp/calendar/events.pl/area/1/",
+  "status": 200,
+  "error": null,
+  "final_url": "https://reggaelife.jp/calendar/events.pl/area/1/",
+  "crawl_delay": 3.0,
+  "bytes": 17295,
+  "has_jsonld": false,
+  "title": "北海道のレゲエイベント - REGGAE LIFE [レゲエライフ]"
+ }
+]

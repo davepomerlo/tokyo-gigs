@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <meta property="og:title" content="Concerts tagged with Traditional Japanese Music- Concert Square / Find classical music concerts in Japan" /><meta property="og:image" content="https://en.concertsquare.jp/img/title.jpg" /><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@concertjapan_en"><meta property="twitter:title" content="Concerts tagged with Traditional Japanese Music - Concert Square / Find classical music concerts in Japan" /><meta property="twitter:image" content="https://en.concertsquare.jp/img/title.jpg" /><meta name="description" content="Classical music information site that aims to connect individuals who enjoy music with performing groups and organizations, providing information on classical music concerts and concert venues.">
+    <title>Concerts tagged with Traditional Japanese Music - Concert Square / Find classical music concerts in Japan</title>
+    <link rel="icon" href="/favicon.ico">
+    <!-- Noto Sans JP Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css" integrity="sha384-9iGP7ka8jww+zVWo+4U2FzcguZFiSBZAAOBGvqRUWh+dJSuSjpnc5RS83z8DJhU1" crossorigin="anonymous">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/webpack/public/style.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-68GH72H4Z6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-68GH72H4Z6');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8732544413118290"
+            crossorigin="anonymous"></script>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js" integrity="sha384-mfqHQKKCvtACT9e259uqxs4vvAzCvhvAC0MUXo8Y4Q4zczGXVt1Mum6Oz2BKFczm" crossorigin="anonymous"></script><script src="/js/public/custom.js" defer></script><script src="/js/public/calendar.js" defer></script><script src="/js/public/slider.js" defer></script><script src="/js/public/area.js" defer></script>
+</head>
+
+<body id="body" class="home">
+
+<div class="p-header">
+    <header>
+        <div class="container">
+            <nav class="u-clearfix">
+                <div class="header-logo float-left">
+                    <a href="/">
+                        <img src="/img/logo.png">
+                    </a>
+                </div>
+                <div class="log-box float-right">
+                    <ul class="flex">
+                        <li class="header_search_btn flex"><button type="button" class="header-search-button"><img src="/img/icon_search.svg" alt="search_icon">Search</button></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="l-header-search">
+        <div class="search-form-wrap">
+            <form id="searchheaderform" action="/concert/search" method="get" class="search-form form">
+                <fieldset class="flex checks-wrap">
+                    <label class="radio u-font-bold">From all contents
+                        <input type="radio" class="" name="search-type" value="overall" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio u-font-bold">Concerts
+                        <input type="radio" class="" name="search-type" value="concert">
+                        <span class="checkmark"></span>
+                    </label>
+                </fieldset>
+                <fieldset class="search-input-box">
+                    <input id="header_search_freeword" name="freeword" class="default search_freeword" type="text" placeholder="Keyword" />
+                    <button id="site_search_button" type="button" class="search-submit-btn"><img src="/img/icon_search-2.svg" alt=""></button>
+                </fieldset>
+                <input type="hidden" name="cx" value="partner-pub-8732544413118290:6643220941" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="hidden" id="search_hidden_q" name="q" value="UTF-8" />
+            </form>
+            <script type="text/javascript">
+                $('#site_search_button').click(function() {
+                    var searchType = $('input:radio[name="search-type"]:checked').val();
+                    if($('#search_freeword').val() == ""){
+                        $("#search_error_message").show(500);
+                        return false;
+                    }
+
+                    if(searchType == "overall"){
+                        $('#searchheaderform').attr("action", "https://www.google.co.jp/cse");
+                        $('#search_hidden_q').val($('#header_search_freeword').val());
+                        $('#searchheaderform').submit();
+                    }else if(searchType == "concert"){
+                        $('#searchheaderform').attr("action", "/concert/search");
+                        $('#searchheaderform').submit();
+                    }
+                    return false;
+                });
+            </script>
+        </div>
+        <button class="close-search-box-btn flex" type="button"><img src="/img/icon_close-white.svg" alt="close-icon">Close</button>
+    </div>
+</div>
+<div class="l-wrapper">
+    <div class="l-main">
+        <div id="main">
+
+            <div class="filter-section top-filter-section">
+    <div class="c-tab homepage-tap">
+        <div class="container">
+            <div class="inner-wrap">
+                <button class="c-tablinks u-font-bold active" onclick="location.href='/concert'" style="border-bottom: #e09d00 1px solid;">Find concerts</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert-box">
+    <div class="container">
+        <p>The content on this website is provided by machine translation and has a risk of containing errors. Please confirm with the organizer about the detail before you go.</p>
+    </div>
+</div>
+
+            <div class="one-column">
+                <div class="container">
+                    <div class="mt-4 w-100 text-center">
+                        <!-- スクウェア : 横長大きめ広告 -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-8732544413118290"
+                             data-ad-slot="9397234710"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+                    <h1 class="c-main-title font-weight-bold">Concerts tagged with Traditional Japanese Music</h1>
+
+                    <div class="high-ranking section-high-ranking1">
+                        <div class="c-sub-title-wrap1">
+                            <h2 class="c-sub-title1 font-weight-bold">Concerts gaining attention</h2>
+                        </div>
+                        <div class="article-wrapper slide-wrap">
+                            <div id="ranking-container" class="swiper-container ranking-container">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-wrapper">
+                                    
+    
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    <p class="ranking-num ranking-1 u-font-bold"><span class="u-hidden">1</span></p>
+                    
+                    
+                    
+                    
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/20260926571137.html">
+                                
+                                
+                                    <img src="/files/image/show/3db4763aede5687331a1e590a1d2e9d0382bcd46f4bafe653b3f76d2326205a7" alt="Masatomo Imado: Shamisen Recital"/>
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/11/01</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/20260926571137.html">Masatomo Imado: Shamisen Recital</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/11/01</span>
+                                
+                                    <span class="time">15:30</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/kyoto">Kyoto</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/331" class="cat-link">Kyoto Aoyama Music Memorial Hall (Baroque Hall)</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    <p class="ranking-num ranking-2 u-font-bold"><span class="u-hidden">2</span></p>
+                    
+                    
+                    
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/202610168805750.html">
+                                
+                                
+                                    <img src="/files/image/show/8c06974af6cbc764d0eb839bc833fef8ad70e35b9204c7905b89b34a358bd787" alt="Tsugaru Shamisen: The Resonance of the Strings&#39; Spirit"/>
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/01/23</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/202610168805750.html">Tsugaru Shamisen: The Resonance of the Strings&#39; Spirit</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/01/23</span>
+                                
+                                    <span class="time">14:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/1909" class="cat-link">Musashino Swing Hall Swing Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    <p class="ranking-num ranking-3 u-font-bold"><span class="u-hidden">3</span></p>
+                    
+                    
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202608084437000.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/10/25</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202608084437000.html">Traditional Performing Arts Festival: Japanese Musical Instruments à la Carte</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/10/25</span>
+                                
+                                    <span class="time">13:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/4429" class="cat-link">J. F. Oberlin Arts and Culture Hall, Stones Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    <p class="ranking-num ranking-4 u-font-bold"><span>4</span></p>
+                    
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202609045736989.html">
+                                
+                                
+                                    <img src="/files/image/show/ba1e5f57db222fcbef4ab2e9e16fd9f31894f0d51635c924ba22aa8179db80ba" alt="Wakuwaku Wa no Oto Lab"/>
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/10/24</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202609045736989.html">Wakuwaku Wa no Oto Lab</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/10/24</span>
+                                
+                                    <span class="time">10:20</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/saitama">Saitama</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/5782" class="cat-link">GAFU -gallery &amp; space-</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            <li class="cat"><a href="/concert/search/preschoolChild" class="cat-link">Welcoming children</a></li>
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>5</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/20260701937072.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/10/22</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/20260701937072.html">Shōzan Hasegawa, *A Comprehensive Guide to the Shakuhachi*, Volume 1: “J.S. Bach”</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/10/22</span>
+                                
+                                    <span class="time">19:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/711" class="cat-link">MUSICASA</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>6</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202606281144330.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/11/29</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202606281144330.html">Hideki Togi Special Concert</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/11/29</span>
+                                
+                                    <span class="time">14:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/hokkaido">Hokkaido</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/1133" class="cat-link">Hakodate City Arts Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>7</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202608245067823.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/10/24</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202608245067823.html">Kamakura Gakufu: Kamakura Concert Vol. 2</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/10/24</span>
+                                
+                                    <span class="time">14:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/kanagawa">Kanagawa</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/264" class="cat-link">Kamakura Art Museum</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>8</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610132008824.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/24</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610132008824.html">The Yoshida Brothers</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/24</span>
+                                
+                                    <span class="time">14:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/saitama">Saitama</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/519" class="cat-link">Tokorozawa Civic Cultural Center, Muse Marquee Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>9</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202606103686845.html">
+                                
+                                
+                                    <img src="/files/image/show/510d7cdf421e195c2f0104818fd259849fde692b90d9b584cd4a49c0fcb715f1" alt="WASABI WASABI LIVE 2026 “Four-Part Frenzy”"/>
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/11/28</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202606103686845.html">WASABI WASABI LIVE 2026 “Four-Part Frenzy”</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/11/28</span>
+                                
+                                    <span class="time">15:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/oosaka">Osaka</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/2716" class="cat-link">Toyonaka City Cultural and Arts Center, Main Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ranking-item article swiper-slide">
+                <div class="ranking-box">
+                    
+                    
+                    
+                    
+                    <p class="ranking-num ranking-5 u-font-bold"><span>10</span></p>
+                </div>
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/202609148019536.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/02/27</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/202609148019536.html">Mayumi Miyata Sho Recital</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/02/27</span>
+                                
+                                    <span class="time">14:00</span>
+                                
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/675" class="cat-link">Suntory Hall Blue Rose (Small Hall)</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-articles section-new-articles">
+                        <div class="c-sub-title-wrap1">
+                            <h2 class="c-sub-title1 font-weight-bold">Newly registered concerts</h2>
+                        </div>
+                        <div class="article-wrapper slide-wrap">
+                            <div class="swiper-container">
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-wrapper">
+                                    
+    
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/20261019723024.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/01/16</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/20261019723024.html">YAMATO: Tamayura Departure Ceremony</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/01/16</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/nara">Nara</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/2862" class="cat-link">Kamimaki Town Cultural Center, Pegasus Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/202610168805750.html">
+                                
+                                
+                                    <img src="/files/image/show/8c06974af6cbc764d0eb839bc833fef8ad70e35b9204c7905b89b34a358bd787" alt="Tsugaru Shamisen: The Resonance of the Strings&#39; Spirit"/>
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/01/23</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/202610168805750.html">Tsugaru Shamisen: The Resonance of the Strings&#39; Spirit</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/01/23</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/1909" class="cat-link">Musashino Swing Hall Swing Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/202610157300800.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/01/15</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/202610157300800.html">Kurashiki Players: Izumi Suzuki Concert</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/01/15</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/okayama">Okayama</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/4695" class="cat-link">Kurashiki City Arts and Culture Center, i-Theater</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/20261003934970.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/27</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/20261003934970.html">DRUM TAO </a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/27</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/ooita">Oita</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/3103" class="cat-link">iichiko Comprehensive Cultural Center Gran Theater</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610035679523.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/23</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610035679523.html">DRUM TAO </a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/23</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/fukuoka">Fukuoka</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/63" class="cat-link">J:COM Kitakyushu Performing Arts Center</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610132008824.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/24</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610132008824.html">The Yoshida Brothers</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/24</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/saitama">Saitama</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/519" class="cat-link">Tokorozawa Civic Cultural Center, Muse Marquee Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610136351052.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/23</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610136351052.html">The Yoshida Brothers</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/23</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/kanagawa">Kanagawa</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/296" class="cat-link">Zushi Culture Plaza, Nagisa Hall</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610139893095.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/12/19</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610139893095.html">The Yoshida Brothers</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/12/19</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/aiti">Aichi</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/4322" class="cat-link">i-Plaza Toyohashi Auditorium</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2026/202610132548209.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2026/11/28</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2026/202610132548209.html">The 6th Rakuichi Rakuza</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2026/11/28</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/toukyo">Tokyo</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/1792" class="cat-link">National Noh Theater</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="article swiper-slide u-overhidden">
+                <div class="flex">
+                    <div>
+                        <div class="img-box u-overhidden">
+                            <a href="/blog/2027/202610038742982.html">
+                                
+                                    <img src="/img/noimage.jpg">
+                                
+                                
+                            </a>
+                        </div>
+                        <div class="desc-box">
+                            <p class="meta-open-date u-sp-show"><span class="date">2027/03/14</span></p>
+                            <h1 class="article-title u-font-bold">
+                                <a href="/blog/2027/202610038742982.html">The Yoshida Brothers</a>
+                            </h1>
+                            <p class="meta-open-date"><img src="/img/icon_calendar.svg" alt="map">
+                                <span class="date">2027/03/14</span>
+                                Starting
+                            </p>
+                            <p class="meta-area">
+                                <img src="/img/icon_map.svg" alt="map">
+                                <span class="prov"> <a href="/concert/prefecture/kyoto">Kyoto</a></span> |
+                                <span class="building">
+                                    <a href="https://www.concerthall.me/halls/136" class="cat-link">Kyoto Prefectural Citizens&#39; Hall (Arti)</a>
+                                    
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="meta-box flex">
+                        <ul class="meta flex">
+                            <li class="cat"><a href="/concert/genre/hougaku" class="cat-link">Traditional Japanese Music</a></li>
+                            
+                            
+                            <li class="cat"><a href="/concert/professional" class="cat-link">Professional</a></li>
+                            <li class="cat"><span class="c-private">Unofficial</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="two-columns">
+                <div class="container u-clearfix">
+                    <div class="left-col">
+                        <div class="c-sub-title-wrap1">
+                            <h2 class="c-sub-title1 u-font-bold">Concerts tagged with Traditional Japanese Music</h2>
+                        </div>
+                        <div class="search-result-list-wrap">
+                            
+    
+        <ul class="search-result-list">
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/19</span> (<span class="day_week" >mo.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">18:30</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/toyama" class="map-link">Toyama</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202607039131244.html">DRUM TAO 2026: New Stage Production “THE HUMAN”</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/toyama" class="map-link">Toyama</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/3140" class="cat-link">Overd Hall, Main Hall</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                &quot;THE HUMAN,&quot; the latest spectacular stage production by the world-renowned Japanese drum ensemble DRUM TAO, explores human drama and the power of sound.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/21</span> (<span class="day_week" >We.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">18:30</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/nagano" class="map-link">Nagano</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202607024355743.html">DRUM TAO 2026: New Stage Production “THE HUMAN”</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/nagano" class="map-link">Nagano</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/2248" class="cat-link">Nagano City Arts Center, Main Hall</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                DRUM TAO presents its new 2026 stage production, “THE HUMAN.” A soul-stirring world of Japanese taiko drums brought to life through overwhelming performances.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/22</span> (<span class="day_week" >Th.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">19:00</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/toukyo" class="map-link">Tokyo</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/20260701937072.html">Shōzan Hasegawa, *A Comprehensive Guide to the Shakuhachi*, Volume 1: “J.S. Bach”</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/toukyo" class="map-link">Tokyo</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/711" class="cat-link">MUSICASA</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                A collection of J.S. Bach’s masterpieces performed by shakuhachi player Shōzan Hasegawa. This special solo recital features the sounds of the shakuhachi in pieces such as the Partitas and the Air on the G String.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/23</span> (<span class="day_week" >Fr.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">19:00</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/kyoto" class="map-link">Kyoto</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202607209444211.html">Mito International Music Festival 2026: Kodokan Outdoor Concert “The Space of Resonance—Five Resonating Breaths”</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/kyoto" class="map-link">Kyoto</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/5046" class="cat-link">Yufusai Kodokan</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                Featuring a comprehensive selection of classical honkyoku pieces as well as works by Kaito Nakahori, Toru Takemitsu, and others. We invite you to enjoy a sublime shakuhachi musical experience woven from silence and resonance.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">10:20</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/saitama" class="map-link">Saitama</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202609045736989.html">Wakuwaku Wa no Oto Lab</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/saitama" class="map-link">Saitama</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/5782" class="cat-link">GAFU -gallery &amp; space-</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                Traditional Japanese Instruments Mini-Concert × Instrument-Making. Participate in a performance using the instruments you make, and try playing the koto and shakuhachi after the concert! October 24 in Musashi-Urawa—an autumn hands-on concert for parents and children ages 0 and up
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/search/preschoolChild">Welcoming children</a></li>
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="concert-thumb u-pc-show">
+                            <a href="/blog/2026/202609045736989.html">
+                                <img src="/files/image/show/ba1e5f57db222fcbef4ab2e9e16fd9f31894f0d51635c924ba22aa8179db80ba" alt="Wakuwaku Wa no Oto Lab" class="thumb"/>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">11:00</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/ibaraki" class="map-link">Ibaraki</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202607158437576.html">The Shakuhachi 5 + Toshiya Suzuki: “From Prayer to Song” Performance at Kasama Inari Shrine</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/ibaraki" class="map-link">Ibaraki</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/6294" class="cat-link">Kasama Inari Shrine</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                &quot;The Shakuhachi 5&quot; and Toshiya Suzuki Present &quot;Sounds of East and West.&quot; Music of prayer—from classical to contemporary—woven together by the shakuhachi and recorder at Kasama Inari Shrine.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">14:00</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/kanagawa" class="map-link">Kanagawa</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202608245067823.html">Kamakura Gakufu: Kamakura Concert Vol. 2</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/kanagawa" class="map-link">Kanagawa</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/264" class="cat-link">Kamakura Art Museum</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                Nagauta Dance &quot;Echigo Lion,&quot; Ensemble Piece &quot;Nayuma,&quot; and Improvisational Performances of Japanese Songs
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">15:30</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/fukui" class="map-link">Fukui</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202606063595853.html">Japanese drum group YAMATO Japan Tour 2026</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/fukui" class="map-link">Fukui</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/6210" class="cat-link">Fukui Prefectural Hall</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                A soul-stirring performance by the world-acclaimed taiko group, YAMATO WA-YAMATO. Experience the powerful sounds and rhythms.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">17:30</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/hyougo" class="map-link">Hyogo</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202608176915557.html">Wadaiko Matsumura-gumi - Kobe Performance 2026 -</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/hyougo" class="map-link">Hyogo</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/148" class="cat-link">Kobe Cultural Hall, Main Hall</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                A special performance at the Kobe Cultural Hall featuring the Matsumura-gumi Japanese Drum Troupe and the Matsumura-za Theater Company.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+                <li class="article">
+                    <div class="grid">
+                        <div class="concert-open-date flex">
+                            <p class="concert-year"><span>2026</span></p>
+                            <p class="concert-date"><span class="mon_date">10/24</span> (<span class="day_week" >sa.</span></span>)</p>
+                            <p class="concert-time"><span class="start-time">19:00</span></p>
+                            <span class="concert-detail u-sp-show">
+                                <ul class="meta-cat">
+                                    <li class="cat"><a href="/concert/prefecture/kyoto" class="map-link">Kyoto</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="concert-detail">
+                            <h2 class="article-title u-font-bold mb-2">
+                                <a href="/blog/2026/202607208063536.html">Mito International Music Festival 2026: Kodokan Outdoor Concert “The Space of Resonance—Five Resonating Breaths”</a>
+                            </h2>
+                            <ul class="meta-cat mb-2 u-pc-show">
+                                <li class="cat"><a href="/concert/prefecture/kyoto" class="map-link">Kyoto</a></li>
+                                <li class="cat">
+                                    <a href="https://www.concerthall.me/halls/5046" class="cat-link">Yufusai Kodokan</a>
+                                    
+                                </li>
+                            </ul>
+                            <p class="mb-2">
+                                Featuring a comprehensive selection of classical honkyoku pieces as well as works by Kaito Nakahori, Toru Takemitsu, and others. We invite you to enjoy a sublime shakuhachi musical experience woven from silence and resonance.
+                            </p>
+                            <ul class="meta-tag">
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/genre/hougaku">Traditional Japanese Music</a></li>
+                                
+                                
+                                <li class="tag"><a class="tag-link tag-link-color" href="/concert/professional">Professional</a></li>
+                                <li class="tag"><span class="c-private">Unofficial</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            
+        </ul>
+    
+
+    
+
+
+                            <div class="p-article-list-pagination-container mt-4">
+                                <nav class="c-pagination-container" role="navigation" aria-label="Pagination">
+    <a class="prev page-numbers" style="opacity: 0.5"><i class="fa fa-angle-left"></i></a>
+    
+
+    
+        
+        
+        
+
+        <span class="page-numbers current">1</span>
+
+        <a class="page-numbers" href="/concert/genre/hougaku?page=2">2</a><a class="page-numbers" href="/concert/genre/hougaku?page=3">3</a><a class="page-numbers" href="/concert/genre/hougaku?page=4">4</a><a class="page-numbers" href="/concert/genre/hougaku?page=5">5</a>
+        
+        
+    
+
+    
+
+    
+    <a class="next page-numbers" href="/concert/genre/hougaku?page=2"><i class="fa fa-angle-right"></i></a>
+</nav>
+                            </div>
+                        </div>
+                    </div><!-- End of left column -->
+
+                    <div class="side-col">
+    <h2 class="c-sub-title1 u-font-bold">Filter concerts</h2>
+    <div class="search-box">
+        <form class="form search-form">
+            <fieldset class="default">
+                <p class="u-font-bold mb-2">Keyword</p>
+                <input class="default" type="text" name="keyword" id="freeword" placeholder="Keyword" value=""/>
+            </fieldset>
+            <fieldset class="default mt-3">
+                <p class="u-font-bold mb-2">Region / Prefecture</p>
+                <input id="prefectureCode-text" class="default p-search-area" type="text" name="area" placeholder="Region/Province where the event will be held" readonly/>
+            </fieldset>
+            <fieldset class="default mt-3">
+                <p class="u-font-bold mb-2">Admission fee</p>
+                <select id="search-price" name="search-price" class="default">
+                    <option value="1">All</option>
+                    <option value="6">Free</option>
+                    <optgroup label="The following are charged">
+                        <option value="2">Less than 1000 yen</option>
+                        <option value="3">Less than 2000 yen</option>
+                        <option value="4">Less than 5000 yen</option>
+                        <option value="5">5000 yen or more</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+            <fieldset class="default mt-3">
+                <p class="u-font-bold mb-2">Custom conditions</p>
+                <label class="checkbox mb-2">Welcoming children
+                    <input type="checkbox" id="preschoolChildPossibleFlag" class="preschoolChildPossibleFlag" name="preschoolChildPossibleFlag" value="true">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox">performed by professionals
+                    <input type="checkbox" id="qualification" class="qualification" name="qualification" value="true">
+                    <span class="checkmark"></span>
+                </label>
+            </fieldset>
+            <fieldset class="default mt-3">
+                <p class="u-font-bold mb-2">Genre</p>
+                <input id="genre-text" class="default p-search-genre" type="text" name="Genres" placeholder="Genres" readonly/>
+            </fieldset>
+
+            <fieldset class="default mt-3">
+                <p class="u-font-bold mb-2">Sort by</p>
+                <select id="search-sort" name="search-sort" class="default">
+                    <option value="1">Date</option>
+                    <option value="2">Registration order</option>
+                </select>
+            </fieldset>
+
+
+            <button id="search-result-button" type="button" class="primary-btn-orange mt-4">Search</button>
+        </form>
+    </div><!-- End of search box -->
+    <h2 class="c-sub-title1 u-font-bold p-calendar-title">See concerts held on</h2>
+    <div class="c-calendar">
+        <section>
+            <div class="main">
+                <div class="custom-calendar-wrap">
+                    <div id="custom-inner" class="custom-inner">
+                        <div class="custom-header u-clearfix">
+                            <nav class="u-clearfix">
+                                <span id="custom-prev" class="custom-prev"></span>
+                                <span id="custom-next" class="custom-next"></span>
+                            </nav>
+                            <div class="flex">
+                                <h2 id="custom-ym-search"></h2>
+                            </div>
+                        </div>
+                        <div id="calendar" class="fc-calendar-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="mt-4 w-100 text-center">
+        <!-- スクウェア : 縦長の広告 -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-8732544413118290"
+             data-ad-slot="9253215742"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div><!-- End of side column -->
+
+<script>
+$(document).ready(function(){
+    var tmpGenreCode = [];
+    $('input[name="genreCode[]"]:checked').each(function(){
+        tmpGenreCode.push($(this).parent().text().replace(/^\s+|\s+$/g, ""));
+    });
+    $("#genre-text").val(tmpGenreCode);
+
+    var tmpPrefectureCode = [];
+    $('input[name="prefectureCode[]"]:checked').each(function(){
+        tmpPrefectureCode.push($(this).parent().text().replace(/^\s+|\s+$/g, ""));
+    });
+    $("#prefectureCode-text").val(tmpPrefectureCode);
+
+    $('input[name="genreCode[]"]').on('change', function () {
+        var genreCode = [];
+        $('input[name="genreCode[]"]:checked').each(function(){
+            genreCode.push($(this).parent().text().replace(/^\s+|\s+$/g, ""));
+        });
+
+        $("#genre-text").val(genreCode);
+    });
+
+    $('input[name="prefectureCode[]"]').on('change', function () {
+        var prefectureCode = [];
+        $('input[name="prefectureCode[]"]:checked').each(function(){
+            prefectureCode.push($(this).parent().text().replace(/^\s+|\s+$/g, ""));
+        });
+
+        $("#prefectureCode-text").val(prefectureCode);
+    });
+
+    $('#search-result-button').on('click', function() {
+        var freeword = $("#freeword").val();
+
+        var giftFlag = $("#giftFlag").is(':checked');
+        var preschoolChildPossibleFlag = $("#preschoolChildPossibleFlag").is(':checked');
+        var qualification = $("#qualification").is(':checked');
+        var search_sort = $("#search-sort").val();
+        var search_price = $("#search-price").val();
+
+        var genreCode = [];
+        $('input[name="genreCode[]"]:checked').each(function(){ genreCode.push($(this).val());});
+
+        var prefectureCode = [];
+        $('input[name="prefectureCode[]"]:checked').each(function(){ prefectureCode.push($(this).val());});
+
+        location.href = "/concert/search?" + $.param({
+            "freeword" : freeword,
+            "giftFlag" : giftFlag,
+            "qualification.value" : qualification,
+            "genreCode" : genreCode,
+            "prefectureCode" : prefectureCode,
+            "preschoolChildPossibleFlag.value": preschoolChildPossibleFlag,
+            "sort" : search_sort,
+            "price": search_price
+        });
+
+    });
+});
+</script>
+                </div>
+            </div>
+        </div> <!-- End of main -->
+    </div>
+
+    
+    <div class="modal-wrap" id="modal-1">
+        <div class="mask"></div>
+        <div class="modal modal-1">
+            <div class="search-wrapper u-clearfix">
+                <h2 class="u-font-bold">Please select areas where you are looking for concerts held in</h2>
+                <form class="form">
+                    <div class="area-box flex">
+                        <div class="area-head area-head-1">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Hokkaido
+                                    <input type="checkbox" class="" value="hokkaido" name="prefectureCode[]">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-2">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Tohoku
+                                    <input type="checkbox" id="touhoku">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="touhoku-box">
+                            <fieldset>
+                                <label class="checkbox">Aomori
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="aomori">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Iwate
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="iwate">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Miyagi
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="miyagi">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Akita
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="akita">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Yamagata
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="yamagata">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Fukushima
+                                    <input type="checkbox" class="touhoku" name="prefectureCode[]" value="fukusima">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-3">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Kanto
+                                    <input type="checkbox" id="kantou">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="kantou-box">
+                            <fieldset>
+                                <label class="checkbox">Ibaraki
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="ibaraki">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Tochigi
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="totigi">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Gunma
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="gunnma">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Saitama
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="saitama">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Chiba
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="tiba">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Tokyo
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="toukyo">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kanagawa
+                                    <input type="checkbox" class="kantou" name="prefectureCode[]" value="kanagawa">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Chubu
+                                    <input type="checkbox" id="tyuubu" name="prefectureCode[]">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="tyuubu-box">
+                            <fieldset>
+                                <label class="checkbox">Niigata
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="niigata">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Toyama
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="toyama">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Ishikawa
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="isikawa">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Fukui
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="fukui">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Nagano
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="nagano">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Yamanashi
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="yamanasi">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Shizuoka
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="sizuoka">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Gifu
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="gifu">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Aichi
+                                    <input type="checkbox" class="tyuubu" name="prefectureCode[]" value="aiti">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-5">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Kansai
+                                    <input type="checkbox" id="kinki">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="kinki-box">
+                            <fieldset>
+                                <label class="checkbox">Mie
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="mie">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Shiga
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="siga">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kyoto
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="kyoto">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Osaka
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="oosaka">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Hyogo
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="hyougo">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Nara
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="nara">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Wakayama
+                                    <input type="checkbox" class="kinki" name="prefectureCode[]" value="wakayama">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-6">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Chugoku
+                                    <input type="checkbox" id="tyuugoku">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="tyuugoku-box">
+                            <fieldset>
+                                <label class="checkbox">Tottori
+                                    <input type="checkbox" class="tyuugoku" name="prefectureCode[]" value="tottori">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Shimane
+                                    <input type="checkbox" class="tyuugoku" name="prefectureCode[]" value="simane">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Okayama
+                                    <input type="checkbox" class="tyuugoku" name="prefectureCode[]" value="okayama">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Hiroshima
+                                    <input type="checkbox" class="tyuugoku" name="prefectureCode[]" value="hirosima">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Yamaguchi
+                                    <input type="checkbox" class="tyuugoku" name="prefectureCode[]" value="yamaguti">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-7">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Shikoku
+                                    <input type="checkbox" id="sikoku" value="四国">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="sikoku-box">
+                            <fieldset>
+                                <label class="checkbox">Tokushima
+                                    <input type="checkbox" class="sikoku" name="prefectureCode[]" value="tokusima">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kagawa
+                                    <input type="checkbox" class="sikoku" name="prefectureCode[]" value="kagawa">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Ehime
+                                    <input type="checkbox" class="sikoku" name="prefectureCode[]" value="ehime">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kouchi
+                                    <input type="checkbox" class="sikoku" name="prefectureCode[]" value="kouti">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Kyusyu
+                                    <input type="checkbox" id="kyuusyu" value="九州・沖縄">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="kyuusyu-box">
+                            <fieldset>
+                                <label class="checkbox">Fukuoka
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="fukuoka">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Saga
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="saga">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Nagasaki
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="nagasaki">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kumamoto
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="kumamoto">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Oita
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="ooita">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Miyazaki
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="miyazaki">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Kagoshima
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="kagosima">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Okinawa
+                                    <input type="checkbox" class="kyuusyu" name="prefectureCode[]" value="okinawa">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="area-box flex">
+                        <div class="area-head area-head-8" style="height: auto;">
+                            <fieldset class="default">
+                                <label class="checkbox u-font-bold">Foreign
+                                    <input type="checkbox" autocomplete="off" id="gaikoku" value="海外">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="area-detail flex" id="gaikoku-box">
+                            <fieldset>
+                                <label class="checkbox">Korea
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="korea">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Taiwan
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="taiwan">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Hongkong
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="hongkong">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Thai
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="tai">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">England
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="england">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">America
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="america">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">France
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="france">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Germany
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="germany">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Austria
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="austria">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                            <fieldset>
+                                <label class="checkbox">Other
+                                    <input type="checkbox" autocomplete="off" class="gaikoku" name="prefectureCode[]" value="other">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="submit-btn-box">
+                        <div class="submit-btn-wrapper flex">
+                            <div class="">
+                                <button type="button" class="outline-btn cancel-btn u-font-bold">Cancel</button>
+                            </div>
+                            <div class="">
+                                <button type="button" class="primary-btn-orange area-apply-btn u-font-bold">Proceed</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    
+<div class="modal-wrap" id="modal-2">
+    <div class="mask"></div>
+    <div class="modal modal-2">
+        <div class="search-wrapper u-clearfix">
+            <h2 class="u-font-bold">Please select genres you are looking for</h2>
+            <form class="form">
+                <div class="genre-box flex">
+                    <fieldset class="col-3">
+                        <label class="checkbox">Orchestra
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="orch">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Brass band
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="brass">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Chorus
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="gasyo">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Piano
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="piano">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Vocal music
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="vocal">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Opera
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="opera">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Kogaku
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="kogaku">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Marching
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="marching">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Drum cor
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="drumcorps">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">British Brass Band
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="british_bs">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Jazz
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="jazz">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">A cappella
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="acappella">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-3">
+                        <label class="checkbox">Traditional Japanese Music
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="hougaku" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-2">
+                        <label class="checkbox">Mandolin Guitar Ensemble
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="mnd">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-2">
+                        <label class="checkbox">Chamber Music &amp; Ensembles
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="ans">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-2">
+                        <label class="checkbox">Lectures and Workshops
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="event">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-2">
+                        <label class="checkbox">Other
+                            <input type="checkbox" class="genreCode" name="genreCode[]" value="other">
+                            <span class="checkmark"></span>
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="submit-btn-box">
+                    <div class="submit-btn-wrapper flex">
+                        <div class="">
+                            <button type="button" class="outline-btn cancel-btn u-font-bold">Cancel</button>
+                        </div>
+                        <div class="">
+                            <button type="button" class="primary-btn-orange genre-apply-btn u-font-bold">Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+<footer class="p-footer">
+    <div class="container">
+        <div class="grid">
+            <div class="footer-logo u-pc-show">
+                <a href="/"><img src="/img/logo.png" width="212" height="40"></a>
+                <div class="u-pc-show" style="margin-top:16px;">
+                    <a href="https://www.concertsquare.jp/" target="_blank" rel="noopener">Japanese</a>,
+                    <a href="https://en.concertsquare.jp/" target="_blank" rel="noopener">English</a>,
+                    <a href="https://kr.concertsquare.jp/" target="_blank" rel="noopener">Korean</a>,
+                    <a href="https://cn.concertsquare.jp/" target="_blank" rel="noopener">Chinese</a>
+                </div>
+            </div>
+            <div class="p-footer-nav grid">
+                <div>
+                    <button class="footer-nav-label p-footer-nav-label-concert u-font-bold" onclick="myFunction1()">Concerts</button>
+                    <ul class="menu p-footer-nav-concert u-clearfix mt-2 u-pc-show">
+                        <li class="menu-item">
+                            <a href="/concert" class="link">Find concerts</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/concert/search/ticketFree" class="link">Find free admission concerts</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/concert/search/preschoolChild" class="link">concerts welcoming children</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/concert/search/qualification" class="link">Find concerts performed by professionals</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <button class="footer-nav-label p-footer-nav-label-other u-font-bold" onclick="myFunction3()">Other</button>
+                    <ul class="menu p-footer-nav-other u-clearfix mt-2 u-pc-show">
+                        <li class="menu-item">
+                            <a href="/whatis" class="link">What is Concert Square?</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://satie-inc.zendesk.com/hc/ja/requests/new" class="link">Contact</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://www.satie.co.jp/" class="link" target="_blank" rel="noopener noreferrer">Company</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/policy" class="link">Terms of use</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/privacy" class="link">Privacy policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="u-sp-show" style="padding-top:15px;">
+                    <a href="/"><img src="/img/logo.png" width="212" height="40"></a><br>
+                    <a href="https://www.concertsquare.jp/" target="_blank" rel="noopener">Japanese</a>,
+                    <a href="https://en.concertsquare.jp/" target="_blank" rel="noopener">English</a>,
+                    <a href="https://kr.concertsquare.jp/" target="_blank" rel="noopener">Korean</a>,
+                    <a href="https://cn.concertsquare.jp/" target="_blank" rel="noopener">Chinese</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-copybox text-center py-3">
+        <p class="c-copyright u-en">Copyright &copy; 1999 - CONCERT SQUARE All Rights Reserved.</p>
+    </div>
+</footer>
+<!-- End of Footer -->
+</div>
+</body>
+
+</html>
