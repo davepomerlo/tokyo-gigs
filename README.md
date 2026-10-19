@@ -30,7 +30,27 @@ and the page at `https://<your-user>.github.io/<repo>/` updates.
 
 Until the first scan finishes the page shows sample listings built from the test fixtures.
 
-## Use it as an app on your phone
+## Android app
+
+GitHub builds a real Android app from this repository:
+**[download tokyo-gigs.apk](https://github.com/davepomerlo/tokyo-gigs/releases/latest/download/tokyo-gigs.apk)**
+(open the link on the phone, then open the downloaded file; Android asks once to allow
+installing apps from Chrome).
+
+- The app downloads the fresh listings from this repository each time it opens, and
+  keeps the last copy for when you're offline. A copy from build time is built in too.
+- Ticket links and "Add to calendar" (Google Calendar) open in a Chrome tab.
+- When the app's code changes, `.github/workflows/android.yml` builds a new version and
+  the app shows "A new version of the app is ready" with a download link. Installing it
+  replaces the old one and keeps your saved gigs.
+- Built with [Capacitor](https://capacitorjs.com) 8 from the `docs/` folder; the Android
+  project is generated fresh in each build (`android-build/` holds the icon script, the
+  version-number script and the signing key).
+- The signing key is committed to this public repo with its password, so anyone could
+  sign an app that installs over yours. That's fine for a personal app, but only ever
+  install the APK from this repository's Releases page.
+
+## Use it as an app on your phone (browser version)
 
 The page is an installable web app: it gets its own home-screen icon, opens full-screen
 without browser bars, and keeps the last listings for offline use (on the subway, say).
@@ -99,5 +119,7 @@ scraper/textutil.py       prices, times, Japanese → English place names (日�
 docs/                     the web page (GitHub Pages)
 docs/manifest.webmanifest app name, icons, shortcuts for installing
 docs/sw.js                offline support (service worker)
-.github/workflows/scan.yml  the 05:00 JST job
+.github/workflows/scan.yml     the 05:00 JST job
+.github/workflows/android.yml  builds and publishes the Android app
+capacitor.config.json, package.json, android-build/   Android app setup
 ```

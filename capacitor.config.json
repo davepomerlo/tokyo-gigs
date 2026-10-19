@@ -1,0 +1,14 @@
+{
+  "appId": "io.github.davepomerlo.tokyogigs",
+  "appName": "Tokyo Gigs",
+  "webDir": "docs",
+  "android": {
+    "backgroundColor": "#eceff2"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "style": "DEFAULT"
+    }
+  }
+}

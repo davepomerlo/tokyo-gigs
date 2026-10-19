@@ -34,6 +34,20 @@
   const dow = (iso) => parse(iso).getUTCDay();
 
   const TODAY = tokyoToday();
+
+  // ---- running as the installed Android app (Capacitor) or as a web page ----
+  const CAP = window.Capacitor;
+  const NATIVE = !!(CAP && CAP.isNativePlatform && CAP.isNativePlatform());
+  const REPO = "davepomerlo/tokyo-gigs";
+  // The app carries a copy of the listings from when it was built; fresh ones come from GitHub.
+  const DATA_URLS = NATIVE
+    ? [`https://raw.githubusercontent.com/${REPO}/main/docs/data/`, "https://davepomerlo.github.io/tokyo-gigs/data/"]
+    : ["data/"];
+  function openExternal(url) {
+    const B = CAP && CAP.Plugins && CAP.Plugins.Browser;
+    if (NATIVE && B) B.open({ url }).catch(() => window.open(url, "_blank"));
+    else window.open(url, "_blank", "noopener");
+  }
   const saved = new Set(store.get("saved", []));
   const state = Object.assign(
     { range: "week", day: null, genres: [], q: "", maxPrice: MAX_PRICE, area: "", free: false, saved: false },
@@ -212,7 +226,31 @@
   }
 
   // ---- calendar export ----
+  // In the app a downloaded .ics goes nowhere, so open Google Calendar's "add event" page instead.
+  function googleCalendar(g) {
+    const d = g.date.replace(/-/g, "");
+    const t = g.start_time || g.open_time;
+    let dates;
+    if (t) {
+      const [h, m] = t.split(":").map(Number);
+      const endH = h + 3, endDay = endH >= 24 ? addDays(g.date, 1).replace(/-/g, "") : d;
+      const p = (n) => String(n).padStart(2, "0");
+      dates = `${d}T${p(h)}${p(m)}00/${endDay}T${p(endH % 24)}${p(m)}00`;
+    } else {
+      dates = `${d}/${addDays(g.date, 1).replace(/-/g, "")}`;
+    }
+    const info = g.ticket_url || g.sources[0]?.url || "";
+    const price = priceOf(g) != null ? `Price: ${yen(priceOf(g))}` : g.free ? "Free" : "";
+    const q = new URLSearchParams({
+      action: "TEMPLATE", text: g.title, dates, ctz: "Asia/Tokyo",
+      location: [g.venue, g.venue_ja, g.area].filter(Boolean).join(", "),
+      details: [price, g.open_time && "Doors " + g.open_time, info].filter(Boolean).join("\n"),
+    });
+    openExternal(`https://calendar.google.com/calendar/render?${q}`);
+  }
+
   function ics(g) {
+    if (NATIVE) { googleCalendar(g); return; }
     const d = g.date.replace(/-/g, "");
     const t = (g.start_time || g.open_time || "").replace(":", "");
     const pad = (s) => s.replace(/[\\,;]/g, (c) => "\\" + c).replace(/\n/g, "\\n");
@@ -245,6 +283,10 @@
   document.addEventListener("click", (e) => {
     const t = e.target.closest("button, a");
     if (!t) return;
+    // in the app, ticket and source links open in a Chrome tab instead of replacing the app
+    if (NATIVE && t.tagName === "A" && /^https?:/i.test(t.getAttribute("href") || "")) {
+      e.preventDefault(); openExternal(t.href); return;
+    }
     if (t.dataset.range) { state.range = t.dataset.range; state.day = null; render(); return; }
     if (t.dataset.day) {
       state.day = state.day === t.dataset.day ? null : t.dataset.day;
@@ -331,8 +373,51 @@
     render();
   }
 
+  // ---- loading in the app: GitHub first, then the last copy kept on the phone, then the built-in copy ----
+  function getJSON(url, ms = 9000) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), ms);
+    return fetch(url, { cache: "no-store", signal: ctl.signal })
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .finally(() => clearTimeout(timer));
+  }
+  async function loadNative() {
+    for (const base of DATA_URLS) {
+      try {
+        const d = await getJSON(base + "gigs.json");
+        if (!d || !Array.isArray(d.gigs)) continue;
+        const m = await getJSON(base + "meta.json").catch(() => null);
+        store.set("cache", { d, m });
+        return boot(d, m, false);
+      } catch { /* try the next source */ }
+    }
+    const kept = store.get("cache", null);
+    if (kept && kept.d) return boot(kept.d, kept.m, true);
+    try {                                          // first launch with no connection
+      const d = await getJSON("data/gigs.json", 4000);
+      return boot(d, await getJSON("data/meta.json", 4000).catch(() => null), true);
+    } catch {
+      $("#updated").textContent = "Listings couldn't be loaded.";
+      $("#list").innerHTML = `<div class="empty-state">Connect to the internet and reopen the app to load the gig listings.</div>`;
+    }
+  }
+
+  // tell the app user when GitHub has built a newer version of the app
+  async function checkAppUpdate() {
+    try {
+      const mine = await getJSON("app-version.json", 3000);
+      const latest = await getJSON(`https://api.github.com/repos/${REPO}/releases/latest`, 6000);
+      if (mine.tag && latest.tag_name && latest.tag_name !== mine.tag) {
+        $("#banner").insertAdjacentHTML("beforeend",
+          `<p class="banner">A new version of the app is ready. <a href="https://github.com/${REPO}/releases/latest/download/tokyo-gigs.apk">Download the update</a></p>`);
+      }
+    } catch { /* offline, or a web build without a version file */ }
+  }
+
   if (window.__GIGS__) {                         // single-file preview build
     boot(window.__GIGS__, window.__META__);
+  } else if (NATIVE) {
+    loadNative().then(checkAppUpdate);
   } else {
     let offline = false;
     Promise.all([
@@ -357,7 +442,7 @@
     if (document.visibilityState === "visible" && tokyoToday() !== TODAY) location.reload();
   });
 
-  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  if (!NATIVE && "serviceWorker" in navigator && location.protocol !== "file:") {
     addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
   }
 

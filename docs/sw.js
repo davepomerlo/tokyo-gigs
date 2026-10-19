@@ -2,7 +2,7 @@
    - App files (page, styles, script, icons): served from cache, refreshed in the background.
    - Gig listings (data/*.json): fetched fresh when online, last copy used when offline.
    Bump VERSION when app files change so phones pick up the new version. */
-const VERSION = "tg-v1";
+const VERSION = "tg-v2";
 const SHELL = [
   "./", "index.html", "style.css", "app.js", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png",

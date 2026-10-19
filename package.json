@@ -1,0 +1,13 @@
+{
+  "name": "tokyo-gigs",
+  "private": true,
+  "description": "Tokyo Gigs Android app: wraps the docs/ web app with Capacitor. Built by .github/workflows/android.yml.",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/browser": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0"
+  }
+}

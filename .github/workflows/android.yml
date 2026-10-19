@@ -1,0 +1,83 @@
+name: Build Android app
+
+# Builds the installable Android app (tokyo-gigs.apk) and publishes it as a GitHub Release.
+# Runs when the app's code changes - not for the daily listings, which the app
+# downloads by itself every time it opens.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/data/**"
+      - "data/**"
+      - "scraper/**"
+      - "tests/**"
+      - "*.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      BUILD: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install tools
+        run: |
+          npm install --no-audit --no-fund
+          pip install pillow
+
+      - name: Create the Android project
+        run: |
+          echo "{\"tag\": \"app-v$BUILD\"}" > docs/app-version.json
+          npx cap add android
+          python android-build/make_assets.py android/app/src/main/res
+          python android-build/patch_gradle.py android/app/build.gradle "$BUILD"
+          npx cap sync android
+
+      - name: Build
+        working-directory: android
+        run: ./gradlew assembleRelease --no-daemon --stacktrace
+
+      - name: Sign
+        run: |
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/zipalign" -p -f 4 android/app/build/outputs/apk/release/app-release-unsigned.apk aligned.apk
+          "$BT/apksigner" sign --ks android-build/tokyo-gigs.jks --ks-key-alias tokyogigs \
+            --ks-pass pass:tokyogigs-app --key-pass pass:tokyogigs-app --out tokyo-gigs.apk aligned.apk
+          "$BT/apksigner" verify --print-certs tokyo-gigs.apk | head -3
+          ls -la tokyo-gigs.apk
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "app-v$BUILD" tokyo-gigs.apk \
+            --title "Tokyo Gigs for Android (build $BUILD)" \
+            --notes "Install on Android: download tokyo-gigs.apk on your phone, open it, and allow installing from Chrome if asked. Listings refresh by themselves every day; you only need a new APK when the app itself changes." \
+            --latest
+          # keep the three newest builds, remove older ones
+          gh release list --limit 100 --json tagName,createdAt \
+            --jq 'map(select(.tagName | startswith("app-v"))) | sort_by(.createdAt) | reverse | .[3:] | .[].tagName' \
+            | xargs -r -n1 gh release delete --cleanup-tag --yes
