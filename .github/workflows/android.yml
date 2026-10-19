@@ -11,6 +11,9 @@ on:
       - "data/**"
       - "scraper/**"
       - "tests/**"
+      - "tools/**"
+      - ".github/workflows/sample.yml"
+      - ".github/workflows/scan.yml"
       - "*.md"
   workflow_dispatch:
 
