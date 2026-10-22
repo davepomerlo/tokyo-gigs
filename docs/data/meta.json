@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-22T05:40+09:00",
-  "total_listings": 1255,
-  "after_merge": 1177,
-  "requests": 145,
+  "generated": "2026-10-23T05:37+09:00",
+  "total_listings": 1429,
+  "after_merge": 1341,
+  "requests": 119,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 272,
-      "seconds": 606.2,
+      "gigs": 264,
+      "seconds": 601.7,
       "error": null,
       "used_previous_results": false,
       "notes": [
@@ -16,21 +16,21 @@
         "page 3: 50 gigs",
         "page 4: 50 gigs",
         "page 5: 50 gigs",
-        "page 6: 33 gigs"
+        "page 6: 27 gigs"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 127,
-      "seconds": 0.7,
+      "gigs": 121,
+      "seconds": 0.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 139,
-      "seconds": 42.7,
+      "gigs": 143,
+      "seconds": 42.5,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -45,24 +45,24 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 340,
-      "seconds": 354.9,
+      "gigs": 527,
+      "seconds": 167.0,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 84,
-      "seconds": 8.5,
+      "gigs": 82,
+      "seconds": 8.9,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "concertsquare": {
       "name": "Concert Square",
-      "gigs": 377,
-      "seconds": 65.5,
+      "gigs": 379,
+      "seconds": 65.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -70,7 +70,7 @@
     "reggaelife": {
       "name": "Reggae Life",
       "gigs": 11,
-      "seconds": 0.8,
+      "seconds": 1.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
