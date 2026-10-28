@@ -1,33 +1,38 @@
 {
-  "generated": "2026-10-28T05:37+09:00",
-  "total_listings": 1404,
-  "after_merge": 1325,
-  "requests": 130,
+  "generated": "2026-10-29T05:46+09:00",
+  "total_listings": 1428,
+  "after_merge": 1335,
+  "requests": 119,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 233,
-      "seconds": 0.6,
+      "gigs": 262,
+      "seconds": 608.3,
       "error": null,
-      "used_previous_results": true,
+      "used_previous_results": false,
       "notes": [
-        "page 1: 0 gigs (status 200, None)"
+        "page 1: 50 gigs",
+        "page 2: 50 gigs",
+        "page 3: 50 gigs",
+        "page 4: 50 gigs",
+        "page 5: 50 gigs",
+        "page 6: 27 gigs"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 132,
-      "seconds": 0.8,
+      "gigs": 128,
+      "seconds": 0.6,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 146,
-      "seconds": 246.5,
+      "gigs": 154,
+      "seconds": 42.4,
       "error": null,
-      "used_previous_results": true,
+      "used_previous_results": false,
       "notes": null
     },
     "jsonld": {
@@ -40,15 +45,15 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 518,
-      "seconds": 162.6,
+      "gigs": 523,
+      "seconds": 165.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 78,
+      "gigs": 79,
       "seconds": 8.6,
       "error": null,
       "used_previous_results": false,
@@ -56,16 +61,16 @@
     },
     "concertsquare": {
       "name": "Concert Square",
-      "gigs": 381,
-      "seconds": 65.5,
+      "gigs": 376,
+      "seconds": 65.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "reggaelife": {
       "name": "Reggae Life",
-      "gigs": 10,
-      "seconds": 0.9,
+      "gigs": 16,
+      "seconds": 0.8,
       "error": null,
       "used_previous_results": false,
       "notes": null
