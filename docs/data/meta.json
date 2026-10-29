@@ -1,36 +1,31 @@
 {
-  "generated": "2026-10-29T05:46+09:00",
-  "total_listings": 1428,
-  "after_merge": 1335,
-  "requests": 119,
+  "generated": "2026-10-30T08:53+09:00",
+  "total_listings": 1445,
+  "after_merge": 1344,
+  "requests": 114,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 262,
-      "seconds": 608.3,
+      "gigs": 248,
+      "seconds": 0.5,
       "error": null,
-      "used_previous_results": false,
+      "used_previous_results": true,
       "notes": [
-        "page 1: 50 gigs",
-        "page 2: 50 gigs",
-        "page 3: 50 gigs",
-        "page 4: 50 gigs",
-        "page 5: 50 gigs",
-        "page 6: 27 gigs"
+        "page 1: 0 gigs (status 200, None)"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 128,
-      "seconds": 0.6,
+      "gigs": 159,
+      "seconds": 0.7,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 154,
-      "seconds": 42.4,
+      "gigs": 155,
+      "seconds": 42.6,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -45,15 +40,15 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 523,
-      "seconds": 165.4,
+      "gigs": 512,
+      "seconds": 161.7,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 79,
+      "gigs": 84,
       "seconds": 8.6,
       "error": null,
       "used_previous_results": false,
@@ -62,15 +57,15 @@
     "concertsquare": {
       "name": "Concert Square",
       "gigs": 376,
-      "seconds": 65.1,
+      "seconds": 65.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "reggaelife": {
       "name": "Reggae Life",
-      "gigs": 16,
-      "seconds": 0.8,
+      "gigs": 22,
+      "seconds": 1.0,
       "error": null,
       "used_previous_results": false,
       "notes": null
