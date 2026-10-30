@@ -1,23 +1,27 @@
 {
-  "generated": "2026-10-30T08:53+09:00",
-  "total_listings": 1445,
-  "after_merge": 1344,
-  "requests": 114,
+  "generated": "2026-10-31T08:41+09:00",
+  "total_listings": 1425,
+  "after_merge": 1330,
+  "requests": 118,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 248,
-      "seconds": 0.5,
+      "gigs": 238,
+      "seconds": 484.1,
       "error": null,
-      "used_previous_results": true,
+      "used_previous_results": false,
       "notes": [
-        "page 1: 0 gigs (status 200, None)"
+        "page 1: 50 gigs",
+        "page 2: 50 gigs",
+        "page 3: 50 gigs",
+        "page 4: 50 gigs",
+        "page 5: 50 gigs"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 159,
-      "seconds": 0.7,
+      "gigs": 153,
+      "seconds": 0.8,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -25,7 +29,7 @@
     "songkick": {
       "name": "Songkick",
       "gigs": 155,
-      "seconds": 42.6,
+      "seconds": 42.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -40,16 +44,16 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 512,
-      "seconds": 161.7,
+      "gigs": 500,
+      "seconds": 172.6,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 84,
-      "seconds": 8.6,
+      "gigs": 82,
+      "seconds": 9.0,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -57,15 +61,15 @@
     "concertsquare": {
       "name": "Concert Square",
       "gigs": 376,
-      "seconds": 65.4,
+      "seconds": 65.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "reggaelife": {
       "name": "Reggae Life",
-      "gigs": 22,
-      "seconds": 1.0,
+      "gigs": 23,
+      "seconds": 1.2,
       "error": null,
       "used_previous_results": false,
       "notes": null
