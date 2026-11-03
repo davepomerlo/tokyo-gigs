@@ -1,35 +1,31 @@
 {
-  "generated": "2026-11-02T08:44+09:00",
-  "total_listings": 1623,
-  "after_merge": 1524,
-  "requests": 121,
+  "generated": "2026-11-03T11:06+09:00",
+  "total_listings": 1614,
+  "after_merge": 1519,
+  "requests": 114,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 234,
-      "seconds": 962.0,
+      "gigs": 229,
+      "seconds": 0.4,
       "error": null,
-      "used_previous_results": false,
+      "used_previous_results": true,
       "notes": [
-        "page 1: 50 gigs",
-        "page 2: 50 gigs",
-        "page 3: 50 gigs",
-        "page 4: 50 gigs",
-        "page 5: 34 gigs"
+        "page 1: 0 gigs (status 200, None)"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 138,
-      "seconds": 0.8,
+      "gigs": 154,
+      "seconds": 0.6,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 150,
-      "seconds": 41.1,
+      "gigs": 152,
+      "seconds": 42.7,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -44,31 +40,31 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 718,
-      "seconds": 162.3,
+      "gigs": 707,
+      "seconds": 164.7,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 78,
-      "seconds": 8.9,
+      "gigs": 80,
+      "seconds": 8.8,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "concertsquare": {
       "name": "Concert Square",
-      "gigs": 386,
-      "seconds": 65.1,
+      "gigs": 374,
+      "seconds": 65.6,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "reggaelife": {
       "name": "Reggae Life",
-      "gigs": 26,
+      "gigs": 24,
       "seconds": 1.1,
       "error": null,
       "used_previous_results": false,
