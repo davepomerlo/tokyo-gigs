@@ -1,6 +1,6 @@
 {
   "url": "https://www.tokyogigguide.com/en/gigs?start=0",
-  "status": 200,
-  "error": null,
-  "body_length": 11983
+  "status": 500,
+  "error": "ReadTimeout: HTTPSConnectionPool(host='www.tokyogigguide.com', port=443): Read timed out. (read timeout=25)",
+  "body_length": 1503
 }
