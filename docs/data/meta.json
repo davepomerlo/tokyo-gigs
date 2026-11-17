@@ -1,30 +1,35 @@
 {
-  "generated": "2026-11-16T08:54+09:00",
+  "generated": "2026-11-17T12:08+09:00",
   "total_listings": 1481,
-  "after_merge": 1383,
-  "requests": 118,
+  "after_merge": 1388,
+  "requests": 126,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 233,
-      "seconds": 240.7,
+      "gigs": 264,
+      "seconds": 971.5,
       "error": null,
-      "used_previous_results": true,
+      "used_previous_results": false,
       "notes": [
-        "page 1: 0 gigs (status 500, ReadTimeout: HTTPSConnectionPool(host='www.tokyogigguide.com', port=443): Read timed out. (read timeout=25))"
+        "page 1: 50 gigs",
+        "page 2: 50 gigs",
+        "page 3: 50 gigs",
+        "page 4: 50 gigs",
+        "page 5: 50 gigs",
+        "page 6: 21 gigs"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 126,
-      "seconds": 0.4,
+      "gigs": 130,
+      "seconds": 0.9,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 154,
+      "gigs": 155,
       "seconds": 42.5,
       "error": null,
       "used_previous_results": false,
@@ -40,32 +45,32 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 573,
-      "seconds": 164.6,
+      "gigs": 516,
+      "seconds": 174.2,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 73,
-      "seconds": 8.7,
+      "gigs": 74,
+      "seconds": 8.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "concertsquare": {
       "name": "Concert Square",
-      "gigs": 396,
-      "seconds": 68.0,
+      "gigs": 398,
+      "seconds": 68.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "reggaelife": {
       "name": "Reggae Life",
-      "gigs": 21,
-      "seconds": 1.2,
+      "gigs": 28,
+      "seconds": 1.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
