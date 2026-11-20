@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-19T10:58+09:00",
-  "total_listings": 1514,
-  "after_merge": 1415,
-  "requests": 121,
+  "generated": "2026-11-20T11:01+09:00",
+  "total_listings": 1509,
+  "after_merge": 1406,
+  "requests": 124,
   "sources": {
     "tokyogigguide": {
       "name": "Tokyo Gig Guide",
-      "gigs": 261,
-      "seconds": 601.8,
+      "gigs": 250,
+      "seconds": 974.7,
       "error": null,
       "used_previous_results": false,
       "notes": [
@@ -15,22 +15,21 @@
         "page 2: 50 gigs",
         "page 3: 50 gigs",
         "page 4: 50 gigs",
-        "page 5: 50 gigs",
-        "page 6: 23 gigs"
+        "page 5: 50 gigs"
       ]
     },
     "tokyodross": {
       "name": "Tokyo Dross",
-      "gigs": 141,
-      "seconds": 0.6,
+      "gigs": 153,
+      "seconds": 1.1,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "songkick": {
       "name": "Songkick",
-      "gigs": 159,
-      "seconds": 42.3,
+      "gigs": 158,
+      "seconds": 42.4,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -45,24 +44,24 @@
     },
     "venues": {
       "name": "Venue websites",
-      "gigs": 544,
-      "seconds": 163.2,
+      "gigs": 526,
+      "seconds": 196.7,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "clubberia": {
       "name": "Clubberia",
-      "gigs": 84,
-      "seconds": 8.8,
+      "gigs": 89,
+      "seconds": 8.5,
       "error": null,
       "used_previous_results": false,
       "notes": null
     },
     "concertsquare": {
       "name": "Concert Square",
-      "gigs": 397,
-      "seconds": 68.6,
+      "gigs": 391,
+      "seconds": 68.5,
       "error": null,
       "used_previous_results": false,
       "notes": null
@@ -70,7 +69,7 @@
     "reggaelife": {
       "name": "Reggae Life",
       "gigs": 30,
-      "seconds": 1.1,
+      "seconds": 0.9,
       "error": null,
       "used_previous_results": false,
       "notes": null
